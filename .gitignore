@@ -6,3 +6,5 @@ npm-debug.*
 *.key
 *.mobileprovision
 ios/build
+android/app/build
+android/.gradle/
