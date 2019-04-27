@@ -3,7 +3,6 @@ const tintColor = '#04A5C9';
 /** Länk till exempel på färgschema
  * https://coolors.co/f4d06f-ddfff7-e6af2e-04a5c9-19647e
  */
-Länk till exempel på färgschema*/
 
 export default {
   tintColor,
