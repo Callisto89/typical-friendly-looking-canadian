@@ -18,4 +18,5 @@ export default {
   noticeBackground: tintColor,
   noticeText: '#fff',
   buttonColor: 'rgba(92, 200, 255, 0.75)',
+  addMeButtonColor: 'rgba(33, 209, 159, 0.75)',
 };
