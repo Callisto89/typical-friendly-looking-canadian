@@ -42,8 +42,8 @@ export default class LiveScreen extends React.Component {
                 </View>
               </TouchableOpacity>
               <TouchableOpacity onPress={this._onPressButton}>
-                <View style={styles.button}>
-                  <ButtonText>Det här är en till knapp</ButtonText>
+                <View style={styles.addMeButton}>
+                  <ButtonText>Anmäl mig till event</ButtonText>
                 </View>
               </TouchableOpacity>
             </View>
@@ -79,6 +79,13 @@ const styles = StyleSheet.create({
     width: 250,
     alignItems: 'center',
     backgroundColor: Colors.buttonColor,
+    padding: 10,
+  },
+  addMeButton: {
+    marginBottom: 30,
+    width: 250,
+    alignItems: 'center',
+    backgroundColor: Colors.addMeButtonColor,
     padding: 10,
   },
 });
