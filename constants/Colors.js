@@ -17,4 +17,5 @@ export default {
   warningText: '#666804',
   noticeBackground: tintColor,
   noticeText: '#fff',
+  buttonColor: 'rgba(92, 200, 255, 0.75)',
 };
