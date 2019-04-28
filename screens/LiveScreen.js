@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 
-import { MonoText } from '../components/StyledText';
+import { StandardText, SmallText, ButtonText } from '../components/StyledText';
 import BackgroundImage from '../components/Background';
 
 export default class LiveScreen extends React.Component {
@@ -39,26 +39,14 @@ export default class LiveScreen extends React.Component {
 
             <View style={styles.getStartedContainer}>
 
-              <Text style={styles.getStartedText}>Get started by opening</Text>
+              <SmallText>Det här är SmallText</SmallText>
 
-              <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-                <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-              </View>
+              <StandardText>Det här är StandardText</StandardText>
 
-              <Text style={styles.getStartedText}>
-                Change this text and your app will automatically reload.
-            </Text>
+              <ButtonText>Det här är ButtonText</ButtonText>
             </View>
 
           </ScrollView>
-
-          <View style={styles.tabBarInfoContainer}>
-            <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-            <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-              <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-            </View>
-          </View>
         </View>
       </BackgroundImage>
     );
@@ -68,13 +56,6 @@ export default class LiveScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
   },
   contentContainer: {
     paddingTop: 30,
@@ -94,61 +75,5 @@ const styles = StyleSheet.create({
   getStartedContainer: {
     alignItems: 'center',
     marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 10,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
   },
 });
