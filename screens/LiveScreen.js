@@ -11,6 +11,7 @@ import {
 
 import { StandardText, SmallText, ButtonText } from '../components/StyledText';
 import BackgroundImage from '../components/Background';
+import Colors from '../constants/Colors';
 
 export default class LiveScreen extends React.Component {
   constructor(props) {
@@ -26,24 +27,25 @@ export default class LiveScreen extends React.Component {
       <BackgroundImage>
         <View style={styles.container}>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-            <View style={styles.welcomeContainer}>
-              <Image
-                source={
-                  __DEV__
-                    ? require('../assets/images/robot-dev.png')
-                    : require('../assets/images/robot-prod.png')
-                }
-                style={styles.welcomeImage}
-              />
-            </View>
 
             <View style={styles.getStartedContainer}>
-
               <SmallText>Det här är SmallText</SmallText>
 
               <StandardText>Det här är StandardText</StandardText>
 
               <ButtonText>Det här är ButtonText</ButtonText>
+            </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity onPress={this._onPressButton}>
+                <View style={styles.button}>
+                  <ButtonText>Det här är en knapp</ButtonText>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={this._onPressButton}>
+                <View style={styles.button}>
+                  <ButtonText>Det här är en till knapp</ButtonText>
+                </View>
+              </TouchableOpacity>
             </View>
 
           </ScrollView>
@@ -60,20 +62,23 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingTop: 30,
   },
-  welcomeContainer: {
+  buttonContainer: {
+    width: '100%',
+    marginTop: 100,
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    padding: 10,
   },
   getStartedContainer: {
     alignItems: 'center',
     marginHorizontal: 50,
+  },
+  button: {
+    marginBottom: 30,
+    width: 250,
+    alignItems: 'center',
+    backgroundColor: Colors.buttonColor,
+    padding: 10,
   },
 });
