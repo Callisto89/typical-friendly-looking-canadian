@@ -12,6 +12,7 @@ export default {
   addMeButtonColor: 'rgba(33, 209, 159, 1)',
   boxColor: 'rgba(4, 165, 201, 1)',
   opacityBoxColor: 'rgba(4, 165, 201, 0.75)',
+  myEventsBoxColor: 'rgba(33, 209, 159, 0.75)',
   standardTextColor: '#DDFFF7',
   headerTextColor: '#DDFFF7',
   buttonTextColor: 'white',

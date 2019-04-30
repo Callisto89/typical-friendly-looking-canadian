@@ -10,6 +10,12 @@ export class StandardText extends React.Component {
 
 export class HeaderText extends React.Component {
   render() {
+    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 22, color: Colors.headerTextColor, fontWeight: 'bold', }]} />;
+  }
+}
+
+export class Header2Text extends React.Component {
+  render() {
     return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 20, color: Colors.headerTextColor, fontWeight: 'bold', }]} />;
   }
 }
