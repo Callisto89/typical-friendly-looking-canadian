@@ -1,7 +1,7 @@
 const getUpcomingEvents = () => {
     return new Promise((resolve, reject) => 
         resolve([{
-            name: 'First Event',
+            name: 'Counter-Strike',
             startDate: Date.now(),
             maxPlayers: 5,
             players: ['Callisto', 'inSym8', 'ProHugoLeet', 'Friberg'],

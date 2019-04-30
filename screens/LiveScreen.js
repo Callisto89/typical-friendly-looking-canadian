@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 
-import { StandardText, HeaderText, SmallText, ButtonText } from '../components/StyledText';
+import { StandardText, HeaderText, Header2Text, SmallText, ButtonText } from '../components/StyledText';
 import BackgroundImage from '../components/Background';
 import Colors from '../constants/Colors';
 
