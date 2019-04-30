@@ -29,6 +29,30 @@ export default class UpcomingScreen extends React.Component {
     updateData();
   };
 
+  timeFormatter(date) {
+    if(typeof(date) === 'number') {
+        date = new Date(date)
+    }
+    let timeString = ''
+    let now = new Date()
+    let tomorrow = new Date()
+    tomorrow.setDate(tomorrow.getDate()+ 1)
+
+    switch (true) {
+        // Om eventet är idag:
+        case now.getDate() === date.getDate():
+        timeString = 'Today ' + date.toTimeString().substring(0, 5)
+        break;
+         // Om eventet är imorgon:
+         case tomorrow.getDate() === date.getDate():
+         timeString = 'Tomorrow ' + date.toTimeString().substring(0, 5)
+         break;
+        default:
+        timeString = date.toString().substring(0, 21)
+      }
+    return timeString
+}
+
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -37,7 +61,7 @@ export default class UpcomingScreen extends React.Component {
           onWillFocus={() => updateData()}
         />
           {
-            this.state.upcomingEvents.map((event, index) => <Text key={index}>{event.name}, {event.startDate}, {event.players}</Text>)
+            this.state.upcomingEvents.map((event, index) => <Text key={index}>{event.name}, {this.timeFormatter(event.startDate)}, {event.players}</Text>)
           }
         </View>
       </ScrollView>

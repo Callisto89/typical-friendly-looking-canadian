@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 
-import { StandardText, SmallText, ButtonText } from '../components/StyledText';
+import { StandardText, HeaderText, SmallText, ButtonText } from '../components/StyledText';
 import BackgroundImage from '../components/Background';
 import Colors from '../constants/Colors';
 
@@ -36,6 +36,9 @@ export default class LiveScreen extends React.Component {
               <ButtonText>Det här är ButtonText</ButtonText>
             </View>
             <View style={styles.eventContainer}>
+            <View style={styles.headerContainer}>
+                <HeaderText>{'Detta är en rubrik'}</HeaderText>
+              </View>
               <View style={styles.textContainer}>
                 <StandardText>{'Detta är en textruta. Det står text i den. Man kan skriva jättemycket text om man känner för det. \n\nPS. All makt åt Tengil.'}</StandardText>
               </View>
@@ -62,7 +65,11 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     padding: 10,
-    backgroundColor: Colors.boxColor,
+    //backgroundColor: Colors.boxColor,
+  },
+  headingContainer: {
+    padding: 10,
+    //backgroundColor: Colors.boxColor,
   },
   eventContainer: {
     width: '80%',
