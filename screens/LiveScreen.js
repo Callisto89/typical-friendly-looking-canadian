@@ -29,18 +29,16 @@ export default class LiveScreen extends React.Component {
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
             <View style={styles.getStartedContainer}>
-              <SmallText>Det här är SmallText</SmallText>
+              <SmallText>Det här är SmallText. So smoooool.</SmallText>
 
               <StandardText>Det här är StandardText</StandardText>
 
               <ButtonText>Det här är ButtonText</ButtonText>
             </View>
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity onPress={this._onPressButton}>
-                <View style={styles.button}>
-                  <ButtonText>Det här är en knapp</ButtonText>
-                </View>
-              </TouchableOpacity>
+            <View style={styles.eventContainer}>
+              <View style={styles.textContainer}>
+                <StandardText>{'Detta är en textruta. Det står text i den. Man kan skriva jättemycket text om man känner för det. \n\nPS. All makt åt Tengil.'}</StandardText>
+              </View>
               <TouchableOpacity onPress={this._onPressButton}>
                 <View style={styles.addMeButton}>
                   <ButtonText>Anmäl mig till event</ButtonText>
@@ -62,27 +60,25 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingTop: 30,
   },
-  buttonContainer: {
-    width: '100%',
+  textContainer: {
+    padding: 10,
+    backgroundColor: Colors.boxColor,
+  },
+  eventContainer: {
+    width: '80%',
+    alignSelf: 'center',
     marginTop: 100,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-    padding: 10,
+    padding: 15,
+    backgroundColor: Colors.opacityBoxColor,
   },
   getStartedContainer: {
     alignItems: 'center',
     marginHorizontal: 50,
   },
-  button: {
-    marginBottom: 30,
-    width: 250,
-    alignItems: 'center',
-    backgroundColor: Colors.buttonColor,
-    padding: 10,
-  },
   addMeButton: {
-    marginBottom: 30,
+    marginBottom: 15,
+    marginTop: 30,
     width: 250,
     alignItems: 'center',
     backgroundColor: Colors.addMeButtonColor,

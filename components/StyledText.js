@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 
 export class StandardText extends React.Component {
   render() {
-    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 17, color: 'tomato', }]} />;
+    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 17, color: 'gray', }]} />;
   }
 }
 
