@@ -53,8 +53,8 @@ export default createBottomTabNavigator({
   SettingsStack,
 },{
   tabBarOptions: {
-    activeBackgroundColor: Colors.tabBackgroundSelected,
-    inactiveBackgroundColor: Colors.tabBackgroundDefault,
+    activeBackgroundColor: Colors.colorAccent,
+    inactiveBackgroundColor: Colors.colorDeactive,
     showLabel: false,
   },
 });

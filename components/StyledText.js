@@ -4,19 +4,19 @@ import Colors from '../constants/Colors';
 
 export class StandardText extends React.Component {
   render() {
-    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 18, color: Colors.standardTextColor, }]} />;
+    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 18, color: Colors.colorLight, }]} />;
   }
 }
 
 export class HeaderText extends React.Component {
   render() {
-    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 22, color: Colors.headerTextColor, fontWeight: 'bold', }]} />;
+    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 22, color: Colors.colorLight, fontWeight: 'bold', }]} />;
   }
 }
 
 export class Header2Text extends React.Component {
   render() {
-    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 20, color: Colors.headerTextColor, fontWeight: 'bold', }]} />;
+    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 20, color: Colors.colorLight, fontWeight: 'bold', }]} />;
   }
 }
 
@@ -28,6 +28,6 @@ export class SmallText extends React.Component {
 
 export class ButtonText extends React.Component {
   render() {
-    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 20, color: Colors.buttonTextColor, }]} />;
+    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 20, color: Colors.colorLight, }]} />;
   }
 }

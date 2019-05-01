@@ -8,7 +8,7 @@ export default class PlayerName extends React.Component {
     return (
       <Text
         size={26}
-        style={{ fontSize: 17, color: Colors.playerListTextColor }}
+        style={{ fontSize: 17, color: Colors.colorSecondary }}
       >{this.props.name}</Text>
     );
   }
