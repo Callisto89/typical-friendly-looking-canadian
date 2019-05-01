@@ -53,5 +53,6 @@ export default class UpcomingScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom: 100,
   },
 });

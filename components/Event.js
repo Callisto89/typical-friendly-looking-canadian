@@ -58,6 +58,11 @@ export default class Event extends React.Component {
                     <View style={styles.listHeaderContainer}>
                         <Header2Text>Waiting list</Header2Text>
                     </View>
+                    <View style={styles.listContainer}>
+                        {
+                        this.props.data.waitingList.map((player, index) => <PlayerName key={index} name={player} />)
+                            }
+                    </View>
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity onPress={this._onPressButton}>
                             <View style={styles.addMeButton}>
@@ -82,10 +87,17 @@ export default class Event extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    compactEventContainer: {
+        width: '80%',
+        alignSelf: 'center',
+        marginTop: 30,
+        padding: 15,
+        backgroundColor: Colors.colorPrimaryOpacity,
+    },
     eventContainer: {
         width: '80%',
         alignSelf: 'center',
-        marginTop: 100,
+        marginTop: 50,
         padding: 15,
         backgroundColor: Colors.colorPrimaryOpacity,
     },
@@ -102,21 +114,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonContainer: {
-        marginTop: 30,
+        marginTop: 20,
         width: '100%',
         alignSelf: 'center',
         alignItems: 'center',
     },
-    compactEventContainer: {
-        width: '80%',
-        alignSelf: 'center',
-        marginTop: 50,
-        padding: 15,
-        backgroundColor: Colors.colorPrimaryOpacity,
-    },
     addMeButton: {
         marginBottom: 15,
-        marginTop: 30,
+        marginTop: 10,
         width: 250,
         alignItems: 'center',
         backgroundColor: Colors.colorPositive,
