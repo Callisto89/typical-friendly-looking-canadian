@@ -1,6 +1,7 @@
 {
   "name": "functions",
   "description": "Cloud Functions for Firebase",
+  "engines": {"node": "8"},
   "scripts": {
     "lint": "eslint .",
     "serve": "firebase serve --only functions",
@@ -8,6 +9,7 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
+    
   },
   "dependencies": {
     "firebase-admin": "~7.0.0",
