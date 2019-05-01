@@ -6,6 +6,7 @@ import BackgroundImage from '../components/Background';
 import Colors from '../constants/Colors';
 import { getUpcomingEvents } from '../utils/mockData';
 import { NavigationEvents } from 'react-navigation';
+import PlayerName from '../components/PlayerName';
 
 export default class UpcomingScreen extends React.Component {
   state = {
@@ -73,15 +74,17 @@ export default class UpcomingScreen extends React.Component {
               this.state.upcomingEvents.map((event, index) => <StandardText key={index}>{this.timeFormatter(event.startDate)}, {event.players.length}/{event.maxPlayers} players</StandardText>)
             }
             <View style={styles.listContainer}>
+              <Header2Text>Signed up players:</Header2Text>
               {
-                this.state.upcomingEvents.map((event, index) => <Header2Text key={index}>Signed up players:</Header2Text>)
+                this.state.upcomingEvents.map((event, index) => {
+                  return event.players.map((player, index) => <PlayerName key={index} name={player} />)
+                })
               }
-              {
-                this.state.upcomingEvents.map((event, index) => <StandardText key={index}>{event.players}</StandardText>)
-              }
-                <View style={styles.listContainer}>
-                  <Header2Text>{'Waiting list:'}</Header2Text>
-                </View>
+            </View>
+            <View style={styles.listContainer}>
+              <Header2Text>{'Waiting list:'}</Header2Text>
+            </View>
+            <View style={styles.buttonContainer}>
               <TouchableOpacity onPress={this._onPressButton}>
                 <View style={styles.addMeButton}>
                   <ButtonText>Anmäl mig till event</ButtonText>
@@ -89,7 +92,7 @@ export default class UpcomingScreen extends React.Component {
               </TouchableOpacity>
             </View>
           </View>
-          
+
           <View style={styles.compactEventContainer}>
             <NavigationEvents
               onWillFocus={() => updateData()}
@@ -119,6 +122,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.opacityBoxColor,
   },
   listContainer: {
+    marginTop: 30,
+    width: '100%',
+    alignSelf: 'center',
+    alignItems: 'center',
+  },
+  buttonContainer: {
     marginTop: 30,
     width: '100%',
     alignSelf: 'center',

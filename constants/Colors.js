@@ -16,4 +16,5 @@ export default {
   standardTextColor: '#DDFFF7',
   headerTextColor: '#DDFFF7',
   buttonTextColor: 'white',
+  playerListTextColor: '#145368',
 };
