@@ -1,20 +1,26 @@
-const tintColor = 'rgba(92, 200, 255, 1)';
-
 /** Länk till exempel på färgschema
  * https://coolors.co/f4d06f-ddfff7-e6af2e-04a5c9-19647e
  */
 
 export default {
-  tintColor,
-  tabBackgroundDefault: 'gray',
-  tabBackgroundSelected: '#19647e',
-  buttonColor: 'rgba(92, 200, 255, 1)',
-  addMeButtonColor: 'rgba(33, 209, 159, 1)',
-  boxColor: 'rgba(4, 165, 201, 1)',
-  opacityBoxColor: 'rgba(4, 165, 201, 0.75)',
-  myEventsBoxColor: 'rgba(33, 209, 159, 0.75)',
-  standardTextColor: '#DDFFF7',
-  headerTextColor: '#DDFFF7',
-  buttonTextColor: 'white',
-  playerListTextColor: '#145368',
+  //medium
+  colorPrimary: 'rgba(4, 165, 201, 1)',
+  //medium
+  colorPrimaryOpacity: 'rgba(4, 165, 201, 0.75)',
+  //dark
+  colorSecondary: 'rgba(20, 83, 104, 1)',
+  //dark
+  colorSecondaryOpacity: 'rgba(20, 83, 104, 0.75)',
+
+  colorLight: 'rgba(221, 255, 247, 1)',
+  colorAccent: 'rgba(244, 208, 111, 1)',
+  colorAccentDark: 'rgba(198, 151, 39, 1)',
+  
+  //add or added color
+  colorPositive: 'rgba(33, 209, 159, 1)',
+  colorPositiveOpacity: 'rgba(33, 209, 159, 0.75)',
+  //remove color
+  colorNegative: 'tomato',
+  colorInactive: 'gray',
+  colorInactiveDark: 'rgba(74, 79, 81, 1)',
 };

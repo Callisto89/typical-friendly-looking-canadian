@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 
-import { StandardText, HeaderText, Header2Text, SmallText, ButtonText } from '../components/StyledText';
+import { StandardText, HeaderText, SmallText, ButtonText } from '../components/StyledText';
 import BackgroundImage from '../components/Background';
 import Colors from '../constants/Colors';
 
@@ -65,11 +65,9 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     padding: 10,
-    //backgroundColor: Colors.boxColor,
   },
   headingContainer: {
     padding: 10,
-    //backgroundColor: Colors.boxColor,
   },
   eventContainer: {
     width: '80%',
@@ -77,7 +75,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     alignItems: 'center',
     padding: 15,
-    backgroundColor: Colors.opacityBoxColor,
+    backgroundColor: Colors.colorPrimaryOpacity,
   },
   getStartedContainer: {
     alignItems: 'center',
@@ -88,7 +86,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     width: 250,
     alignItems: 'center',
-    backgroundColor: Colors.addMeButtonColor,
+    backgroundColor: Colors.colorPositive,
     padding: 10,
   },
 });

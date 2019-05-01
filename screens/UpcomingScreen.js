@@ -119,14 +119,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 100,
     padding: 15,
-    backgroundColor: Colors.opacityBoxColor,
+    backgroundColor: Colors.colorPrimaryOpacity,
   },
   listHeaderContainer: {
     marginTop: 30,
     width: '80%',
     alignSelf: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.opacityBoxColor,
   },
   listContainer: {
     marginTop: 10,
@@ -145,14 +144,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 50,
     padding: 15,
-    backgroundColor: Colors.opacityBoxColor,
+    backgroundColor: Colors.colorPrimaryOpacity,
   },
   addMeButton: {
     marginBottom: 15,
     marginTop: 30,
     width: 250,
     alignItems: 'center',
-    backgroundColor: Colors.addMeButtonColor,
+    backgroundColor: Colors.colorPositive,
     padding: 10,
   },
 });

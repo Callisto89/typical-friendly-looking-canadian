@@ -8,7 +8,7 @@ export default class TabBarIcon extends React.Component {
     return (
       <Text
         size={26}
-        style={{ marginBottom: -3, color: this.props.focused ? Colors.tabIconSelected : Colors.tabIconDefault}}
+        style={{ marginBottom: -3, color: this.props.focused ? Colors.colorAccentDark : Colors.colorInactiveDark}}
       >{this.props.name}</Text>
     );
   }
