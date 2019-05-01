@@ -72,9 +72,6 @@ export default class Event extends React.Component {
             return (
                 <View>
                     <View style={styles.compactEventContainer}>
-                        <NavigationEvents
-                            onWillFocus={() => updateData()}
-                        />
                         <HeaderText>{this.props.data.name}</HeaderText>
                         <StandardText>{this.timeFormatter(this.props.data.startDate)}, {this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardText>
                     </View>
