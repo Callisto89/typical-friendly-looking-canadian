@@ -12,11 +12,39 @@ import {
 import { StandardText, HeaderText, SmallText, ButtonText } from '../components/StyledText';
 import BackgroundImage from '../components/Background';
 import Colors from '../constants/Colors';
+import * as firebase from 'firebase';
+
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyAwn6zMdAhCuA2aUb1QW07gsBNk5I1f5w4",
+  authDomain: "wardr-94a12.firebaseapp.com",
+  databaseURL: "https://wardr-94a12.firebaseio.com",
+  projectId: "wardr-94a12",
+  storageBucket: "wardr-94a12.appspot.com",
+  messagingSenderId: "404390621281"
+};
+firebase.initializeApp(firebaseConfig);
 
 export default class LiveScreen extends React.Component {
+  
+  state = {
+    greeting: ''
+  };
+
   constructor(props) {
     super(props);
   };
+
+  componentDidMount() {
+    console.log('greetings');
+    fetch('https://us-central1-wardr-94a12.cloudfunctions.net/helloWorld')
+      .then((res) => {
+        console.log('greeting: ', res._bodyText);
+        this.setState({
+          greeting: res._bodyText
+        });
+      });
+  }
 
   static navigationOptions = {
     header: null,
@@ -34,6 +62,7 @@ export default class LiveScreen extends React.Component {
               <StandardText>Det här är StandardText</StandardText>
 
               <ButtonText>Det här är ButtonText</ButtonText>
+              <StandardText>{this.state.greeting}</StandardText>
             </View>
             <View style={styles.eventContainer}>
             <View style={styles.headerContainer}>
