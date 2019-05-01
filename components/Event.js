@@ -45,32 +45,32 @@ export default class Event extends React.Component {
             return (
                 <View>
                     <View style={styles.eventContainer}>
-                    <HeaderText>{this.props.data.name}</HeaderText>
+                        <HeaderText>{this.props.data.name}</HeaderText>
                         <StandardText>{this.timeFormatter(this.props.data.startDate)}, {this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardText>
-                    <View style={styles.listHeaderContainer}>
-                        <Header2Text>Signed up players</Header2Text>
-                    </View>
-                    <View style={styles.listContainer}>
-                        {
-                        this.props.data.players.map((player, index) => <PlayerName key={index} name={player} />)
+                        <View style={styles.listHeaderContainer}>
+                            <Header2Text>Signed up players</Header2Text>
+                        </View>
+                        <View style={styles.listContainer}>
+                            {
+                                this.props.data.players.map((player, index) => <PlayerName key={index} name={player} />)
                             }
-                    </View>
-                    <View style={styles.listHeaderContainer}>
-                        <Header2Text>Waiting list</Header2Text>
-                    </View>
-                    <View style={styles.listContainer}>
-                        {
-                        this.props.data.waitingList.map((player, index) => <PlayerName key={index} name={player} />)
+                        </View>
+                        <View style={styles.listHeaderContainer}>
+                            <Header2Text>Waiting list</Header2Text>
+                        </View>
+                        <View style={styles.listContainer}>
+                            {
+                                this.props.data.waitingList.map((player, index) => <PlayerName key={index} name={player} />)
                             }
+                        </View>
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity onPress={this._onPressButton}>
+                                <View style={styles.addMeButton}>
+                                    <ButtonText>Anmäl mig till event</ButtonText>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity onPress={this._onPressButton}>
-                            <View style={styles.addMeButton}>
-                                <ButtonText>Anmäl mig till event</ButtonText>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                </View>
                 </View>
             )
         } else {
