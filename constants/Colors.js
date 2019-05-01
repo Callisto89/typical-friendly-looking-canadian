@@ -11,7 +11,7 @@ export default {
   colorSecondary: 'rgba(20, 83, 104, 1)',
   //dark
   colorSecondaryOpacity: 'rgba(20, 83, 104, 0.75)',
-  
+
   colorLight: 'rgba(221, 255, 247, 1)',
   colorAccent: 'rgba(244, 208, 111, 1)',
   colorAccentDark: 'rgba(198, 151, 39, 1)',
@@ -21,6 +21,6 @@ export default {
   colorPositiveOpacity: 'rgba(33, 209, 159, 0.75)',
   //remove color
   colorNegative: 'tomato',
-  colorDeactive: 'gray',
-  colorDeactiveDark: 'rgba(74, 79, 81, 1)',
+  colorInactive: 'gray',
+  colorInactiveDark: 'rgba(74, 79, 81, 1)',
 };
