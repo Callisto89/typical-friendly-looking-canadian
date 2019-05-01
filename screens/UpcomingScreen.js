@@ -57,8 +57,6 @@ export default class UpcomingScreen extends React.Component {
     return timeString
   }
 
-
-
   render() {
     return (
       <BackgroundImage>
@@ -73,16 +71,18 @@ export default class UpcomingScreen extends React.Component {
             {
               this.state.upcomingEvents.map((event, index) => <StandardText key={index}>{this.timeFormatter(event.startDate)}, {event.players.length}/{event.maxPlayers} players</StandardText>)
             }
+            <View style={styles.listHeaderContainer}>
+              <Header2Text>Signed up players</Header2Text>
+            </View>
             <View style={styles.listContainer}>
-              <Header2Text>Signed up players:</Header2Text>
               {
                 this.state.upcomingEvents.map((event, index) => {
                   return event.players.map((player, index) => <PlayerName key={index} name={player} />)
                 })
               }
             </View>
-            <View style={styles.listContainer}>
-              <Header2Text>{'Waiting list:'}</Header2Text>
+            <View style={styles.listHeaderContainer}>
+              <Header2Text>Waiting list</Header2Text>
             </View>
             <View style={styles.buttonContainer}>
               <TouchableOpacity onPress={this._onPressButton}>
@@ -121,8 +121,15 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: Colors.opacityBoxColor,
   },
-  listContainer: {
+  listHeaderContainer: {
     marginTop: 30,
+    width: '80%',
+    alignSelf: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.opacityBoxColor,
+  },
+  listContainer: {
+    marginTop: 10,
     width: '100%',
     alignSelf: 'center',
     alignItems: 'center',
