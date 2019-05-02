@@ -13,7 +13,7 @@ import { StandardText, HeaderText, SmallText, ButtonText } from '../components/S
 import BackgroundImage from '../components/Background';
 import Colors from '../constants/Colors';
 import AddEvent from '../components/AddEvent';
-//import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -24,7 +24,7 @@ const firebaseConfig = {
   storageBucket: "wardr-94a12.appspot.com",
   messagingSenderId: "404390621281"
 };
-//firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 export default class LiveScreen extends React.Component {
   
