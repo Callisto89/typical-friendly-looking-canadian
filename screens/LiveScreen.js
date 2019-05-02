@@ -12,6 +12,7 @@ import {
 import { StandardText, HeaderText, SmallText, ButtonText } from '../components/StyledText';
 import BackgroundImage from '../components/Background';
 import Colors from '../constants/Colors';
+import AddEvent from '../components/AddEvent';
 //import * as firebase from 'firebase';
 
 // Initialize Firebase
@@ -55,6 +56,7 @@ export default class LiveScreen extends React.Component {
         <View style={styles.container}>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
+          <View style={styles.addEventButtonContainer}><AddEvent/></View>
             <View style={styles.getStartedContainer}>
               <SmallText>Det här är SmallText. So smoooool.</SmallText>
 
@@ -90,6 +92,11 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 30,
+  },
+  addEventButtonContainer: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    marginBottom: 5,
   },
   textContainer: {
     padding: 10,

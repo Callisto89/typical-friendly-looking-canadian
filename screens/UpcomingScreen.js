@@ -6,8 +6,8 @@ import BackgroundImage from '../components/Background';
 import Colors from '../constants/Colors';
 import { getUpcomingEvents } from '../utils/mockData';
 import { NavigationEvents } from 'react-navigation';
-import PlayerName from '../components/PlayerName';
 import Event from '../components/Event';
+import AddEvent from '../components/AddEvent';
 
 export default class UpcomingScreen extends React.Component {
   state = {
@@ -37,10 +37,11 @@ export default class UpcomingScreen extends React.Component {
   render() {
     return (
       <BackgroundImage>
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             <NavigationEvents
               onWillFocus={() => updateData()}
             />
+            <View style={styles.addEventButtonContainer}><AddEvent/></View>
             {
               this.state.upcomingEvents.map((event, index) => <Event key={index} data={event}/>)
             }
@@ -55,4 +56,12 @@ const styles = StyleSheet.create({
     flex: 1,
     marginBottom: 100,
   },
+  contentContainer: {
+    paddingTop: 30,
+  },
+  addEventButtonContainer: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    marginBottom: 5,
+  }
 });
