@@ -7,7 +7,7 @@ import Colors from '../constants/Colors';
 export default class AddEventButton extends React.Component {
     
     createEvent() {
-        Alert.alert('Boop the snoot!')
+        Alert.alert('Boop the snoot!');
     }
     
     render() {
