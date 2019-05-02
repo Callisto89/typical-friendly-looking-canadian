@@ -8,13 +8,12 @@ export default class AddEventButton extends React.Component {
     
     createEvent() {
         Alert.alert('Boop the snoot!')
-      }
+    }
     
     render() {
         return (
             <TouchableOpacity onPress={this.createEvent} style={styles.addEventButton}>
-                <ButtonText>Create new event</ButtonText>
-                
+                <ButtonText>Create new event</ButtonText>   
             </TouchableOpacity>
         )
     }
