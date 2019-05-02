@@ -1,15 +1,11 @@
 import React from 'react';
 import {
-  Image,
-  Platform,
   ScrollView,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 
-import { StandardText, HeaderText, SmallText, ButtonText } from '../components/StyledText';
+import { StandardText, BigText, HeaderText, } from '../components/StyledText';
 import BackgroundImage from '../components/Background';
 import Colors from '../constants/Colors';
 import AddEvent from '../components/AddEvent';
@@ -27,7 +23,7 @@ const firebaseConfig = {
 //firebase.initializeApp(firebaseConfig);
 
 export default class LiveScreen extends React.Component {
-  
+
   state = {
     greeting: ''
   };
@@ -55,30 +51,15 @@ export default class LiveScreen extends React.Component {
       <BackgroundImage>
         <View style={styles.container}>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-
-          <View style={styles.addEventButtonContainer}><AddEvent/></View>
-            <View style={styles.getStartedContainer}>
-              <SmallText>Det här är SmallText. So smoooool.</SmallText>
-
-              <StandardText>Det här är StandardText</StandardText>
-
-              <ButtonText>Det här är ButtonText</ButtonText>
-              <StandardText>{this.state.greeting}</StandardText>
+            <StandardText style={{ alignSelf: 'center', }}>{this.state.greeting}</StandardText>
+            <View style={styles.buttonContainer}><AddEvent /></View>
+            <View style={styles.bigHeaderContainer}>
+              <BigText>Next event</BigText>
             </View>
-            <View style={styles.eventContainer}>
-            <View style={styles.headerContainer}>
-                <HeaderText>{'Detta är en rubrik'}</HeaderText>
-              </View>
-              <View style={styles.textContainer}>
-                <StandardText>{'Detta är en textruta. Det står text i den. Man kan skriva jättemycket text om man känner för det. \n\nPS. All makt åt Tengil.'}</StandardText>
-              </View>
-              <TouchableOpacity onPress={this._onPressButton}>
-                <View style={styles.addMeButton}>
-                  <ButtonText>Anmäl mig till event</ButtonText>
-                </View>
-              </TouchableOpacity>
+            <View style={styles.textBoxContainer}>
+              <HeaderText style={styles.headerContainer}>Det här är en rubrik</HeaderText>
+              <StandardText style={styles.textContainer}>{'Detta är en textruta. Det står text i den. Man kan skriva jättemycket text om man känner för det. \n\nPS. All makt åt Tengil.'}</StandardText>
             </View>
-
           </ScrollView>
         </View>
       </BackgroundImage>
@@ -93,35 +74,32 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingTop: 30,
   },
-  addEventButtonContainer: {
+  bigHeaderContainer: {
+    width: '80%',
+    padding: 10,
+    marginTop: 30,
     alignSelf: 'center',
     alignItems: 'center',
-    marginBottom: 5,
+    backgroundColor: Colors.colorPrimary,
   },
-  textContainer: {
-    padding: 10,
-  },
-  headingContainer: {
-    padding: 10,
-  },
-  eventContainer: {
+  textBoxContainer: {
     width: '80%',
     alignSelf: 'center',
-    marginTop: 100,
+    marginTop: 0,
     alignItems: 'center',
     padding: 15,
     backgroundColor: Colors.colorPrimaryOpacity,
   },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  addMeButton: {
-    marginBottom: 15,
-    marginTop: 30,
-    width: 250,
-    alignItems: 'center',
-    backgroundColor: Colors.colorPositive,
+  headerContainer: {
+    alignSelf: 'center',
     padding: 10,
+  },
+  textContainer: {
+    padding: 10,
+  },
+  buttonContainer: {
+    marginTop: 10,
+    alignSelf: 'center',
+    alignItems: 'center',
   },
 });

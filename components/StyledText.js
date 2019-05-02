@@ -8,6 +8,12 @@ export class StandardText extends React.Component {
   }
 }
 
+export class BigText extends React.Component {
+  render() {
+    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 26, color: Colors.colorLight, fontWeight: 'bold', }]} />;
+  }
+}
+
 export class HeaderText extends React.Component {
   render() {
     return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 22, color: Colors.colorLight, fontWeight: 'bold', }]} />;
@@ -17,12 +23,6 @@ export class HeaderText extends React.Component {
 export class Header2Text extends React.Component {
   render() {
     return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 20, color: Colors.colorLight, fontWeight: 'bold', }]} />;
-  }
-}
-
-export class SmallText extends React.Component {
-  render() {
-    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 10, color: 'tomato', }]} />;
   }
 }
 
