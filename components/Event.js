@@ -1,19 +1,24 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View, TouchableOpacity, } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, } from 'react-native';
 
 import { StandardText, HeaderText, Header2Text, ButtonText } from '../components/StyledText';
 import Colors from '../constants/Colors';
-import { getUpcomingEvents } from '../utils/mockData';
-import { NavigationEvents } from 'react-navigation';
 import PlayerName from '../components/PlayerName';
 
 export default class Event extends React.Component {
-    state = {
-        expanded: false,
-    };
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            expanded: false,
+        };
+    };
+
+    toggleEventView() {
+        this.setState({
+            expanded: !this.state.expanded
+        });
     };
 
     timeFormatter(date) {
@@ -44,7 +49,7 @@ export default class Event extends React.Component {
         if (this.state.expanded) {
             return (
                 <View>
-                    <View style={styles.eventContainer}>
+                    <TouchableOpacity onPress={this.toggleEventView.bind(this)} style={styles.eventContainer}>
                         <HeaderText>{this.props.data.name}</HeaderText>
                         <StandardText>{this.timeFormatter(this.props.data.startDate)}, {this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardText>
                         <View style={styles.listHeaderContainer}>
@@ -70,16 +75,16 @@ export default class Event extends React.Component {
                                 </View>
                             </TouchableOpacity>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 </View>
             )
         } else {
             return (
                 <View>
-                    <View style={styles.compactEventContainer}>
+                    <TouchableOpacity onPress={this.toggleEventView.bind(this)} style={styles.compactEventContainer}>
                         <HeaderText>{this.props.data.name}</HeaderText>
                         <StandardText>{this.timeFormatter(this.props.data.startDate)}, {this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardText>
-                    </View>
+                    </TouchableOpacity>
                 </View>
             )
         };
