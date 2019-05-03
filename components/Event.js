@@ -50,9 +50,9 @@ export default class Event extends React.Component {
             return (
                 <View>
                     <TouchableOpacity onPress={this.toggleEventView.bind(this)} style={styles.eventContainer}>
-                    <HeaderText>{this.props.data.name}</HeaderText>
+                        <HeaderText>{this.props.data.name}</HeaderText>
                         <StandardText>{this.timeFormatter(this.props.data.startDate)}</StandardText>
-                        <StandardTextDark style= {{marginTop: 10,}}>{this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardTextDark>
+                        <StandardTextDark style={{ marginTop: 10, }}>{this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardTextDark>
                         <View style={styles.listHeaderContainer}>
                             <Header2Text>Signed up players</Header2Text>
                         </View>
@@ -85,7 +85,7 @@ export default class Event extends React.Component {
                     <TouchableOpacity onPress={this.toggleEventView.bind(this)} style={styles.compactEventContainer}>
                         <HeaderText>{this.props.data.name}</HeaderText>
                         <StandardText>{this.timeFormatter(this.props.data.startDate)}</StandardText>
-                        <StandardTextDark style= {{marginTop: 10,}}>{this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardTextDark>
+                        <StandardTextDark style={{ marginTop: 10, }}>{this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardTextDark>
                     </TouchableOpacity>
                 </View>
             )
