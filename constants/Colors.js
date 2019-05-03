@@ -20,7 +20,7 @@ export default {
   colorPositive: 'rgba(33, 209, 159, 1)',
   colorPositiveOpacity: 'rgba(33, 209, 159, 0.75)',
   //remove color
-  colorNegative: 'tomato',
+  colorNegative: 'rgba(238, 66, 102, 1)',
   colorInactive: 'gray',
   colorInactiveDark: 'rgba(74, 79, 81, 1)',
 };
