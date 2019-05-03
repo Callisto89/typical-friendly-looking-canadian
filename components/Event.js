@@ -84,7 +84,7 @@ export default class Event extends React.Component {
                         </View>
                         <View style={styles.editContainer}>
                             <TouchableOpacity onPress={this.editEvent} style={styles.editEventButton}>
-                                <StandardTextDark>Edit event</StandardTextDark>
+                                <StandardText>Edit event</StandardText>
                             </TouchableOpacity>
                         </View>
                     </TouchableOpacity>
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         width: 125,
         alignItems: 'center',
-        backgroundColor: Colors.colorInactive,
+        backgroundColor: Colors.colorPositive,
         padding: 5,
     },
 });
