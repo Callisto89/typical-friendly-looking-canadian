@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, } from 'react-native';
+import { Alert, StyleSheet, View, TouchableOpacity, } from 'react-native';
 
 import { StandardText, HeaderText, Header2Text, ButtonText, StandardTextDark, } from '../components/StyledText';
 import Colors from '../constants/Colors';
-import PlayerName from '../components/PlayerName';
+import PlayerList from '../components/PlayerList';
 
 export default class Event extends React.Component {
 
@@ -19,6 +19,10 @@ export default class Event extends React.Component {
         this.setState({
             expanded: !this.state.expanded
         });
+    };
+
+    editEvent() {
+        Alert.alert('Snape kills Dumbledore');
     };
 
     timeFormatter(date) {
@@ -50,15 +54,17 @@ export default class Event extends React.Component {
             return (
                 <View>
                     <TouchableOpacity onPress={this.toggleEventView.bind(this)} style={styles.eventContainer}>
-                        <HeaderText>{this.props.data.name}</HeaderText>
-                        <StandardText>{this.timeFormatter(this.props.data.startDate)}</StandardText>
-                        <StandardTextDark style={{ marginTop: 10, }}>{this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardTextDark>
+                        <View style={styles.eventInfoContainer}>
+                            <HeaderText>{this.props.data.name}</HeaderText>
+                            <StandardText>{this.timeFormatter(this.props.data.startDate)}</StandardText>
+                            <StandardTextDark style={{ marginTop: 10, }}>{this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardTextDark>
+                        </View>
                         <View style={styles.listHeaderContainer}>
                             <Header2Text>Signed up players</Header2Text>
                         </View>
                         <View style={styles.listContainer}>
                             {
-                                this.props.data.players.map((player, index) => <PlayerName key={index} name={player} />)
+                                this.props.data.players.map((player, index) => <PlayerList key={index} name={player} />)
                             }
                         </View>
                         <View style={styles.listHeaderContainer}>
@@ -66,7 +72,7 @@ export default class Event extends React.Component {
                         </View>
                         <View style={styles.listContainer}>
                             {
-                                this.props.data.waitingList.map((player, index) => <PlayerName key={index} name={player} />)
+                                this.props.data.waitingList.map((player, index) => <PlayerList key={index} name={player} />)
                             }
                         </View>
                         <View style={styles.buttonContainer}>
@@ -76,6 +82,11 @@ export default class Event extends React.Component {
                                 </View>
                             </TouchableOpacity>
                         </View>
+                        <View style={styles.editContainer}>
+                            <TouchableOpacity onPress={this.editEvent} style={styles.editEventButton}>
+                                <StandardTextDark>Edit event</StandardTextDark>
+                            </TouchableOpacity>
+                        </View>
                     </TouchableOpacity>
                 </View>
             )
@@ -83,9 +94,11 @@ export default class Event extends React.Component {
             return (
                 <View>
                     <TouchableOpacity onPress={this.toggleEventView.bind(this)} style={styles.compactEventContainer}>
-                        <HeaderText>{this.props.data.name}</HeaderText>
-                        <StandardText>{this.timeFormatter(this.props.data.startDate)}</StandardText>
-                        <StandardTextDark style={{ marginTop: 10, }}>{this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardTextDark>
+                        <View style={styles.eventInfoContainer}>
+                            <HeaderText>{this.props.data.name}</HeaderText>
+                            <StandardText>{this.timeFormatter(this.props.data.startDate)}</StandardText>
+                            <StandardTextDark style={{ marginTop: 10, }}>{this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardTextDark>
+                        </View>
                     </TouchableOpacity>
                 </View>
             )
@@ -98,15 +111,18 @@ const styles = StyleSheet.create({
         width: '80%',
         alignSelf: 'center',
         marginTop: 30,
-        padding: 15,
+        padding: 10,
         backgroundColor: Colors.colorPrimaryOpacity,
     },
     eventContainer: {
         width: '80%',
         alignSelf: 'center',
         marginTop: 30,
-        padding: 15,
+        padding: 10,
         backgroundColor: Colors.colorPrimaryOpacity,
+    },
+    eventInfoContainer: {
+        marginLeft: 10,
     },
     listHeaderContainer: {
         marginTop: 30,
@@ -133,5 +149,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: Colors.colorPositive,
         padding: 10,
+    },
+    editContainer: {
+        marginTop: 10,
+        alignSelf: 'flex-end',
+    },
+    editEventButton: {
+        marginTop: 10,
+        width: 125,
+        alignItems: 'center',
+        backgroundColor: Colors.colorInactive,
+        padding: 5,
     },
 });
