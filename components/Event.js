@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, } from 'react-native';
 
-import { StandardText, HeaderText, Header2Text, ButtonText } from '../components/StyledText';
+import { StandardText, HeaderText, Header2Text, ButtonText, StandardTextDark, } from '../components/StyledText';
 import Colors from '../constants/Colors';
 import PlayerName from '../components/PlayerName';
 
@@ -51,7 +51,8 @@ export default class Event extends React.Component {
                 <View>
                     <TouchableOpacity onPress={this.toggleEventView.bind(this)} style={styles.eventContainer}>
                         <HeaderText>{this.props.data.name}</HeaderText>
-                        <StandardText>{this.timeFormatter(this.props.data.startDate)}, {this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardText>
+                        <StandardText>{this.timeFormatter(this.props.data.startDate)}</StandardText>
+                        <StandardTextDark style={{ marginTop: 10, }}>{this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardTextDark>
                         <View style={styles.listHeaderContainer}>
                             <Header2Text>Signed up players</Header2Text>
                         </View>
@@ -83,7 +84,8 @@ export default class Event extends React.Component {
                 <View>
                     <TouchableOpacity onPress={this.toggleEventView.bind(this)} style={styles.compactEventContainer}>
                         <HeaderText>{this.props.data.name}</HeaderText>
-                        <StandardText>{this.timeFormatter(this.props.data.startDate)}, {this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardText>
+                        <StandardText>{this.timeFormatter(this.props.data.startDate)}</StandardText>
+                        <StandardTextDark style={{ marginTop: 10, }}>{this.props.data.players.length}/{this.props.data.maxPlayers} players</StandardTextDark>
                     </TouchableOpacity>
                 </View>
             )
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     eventContainer: {
         width: '80%',
         alignSelf: 'center',
-        marginTop: 50,
+        marginTop: 30,
         padding: 15,
         backgroundColor: Colors.colorPrimaryOpacity,
     },

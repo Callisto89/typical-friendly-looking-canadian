@@ -8,6 +8,12 @@ export class StandardText extends React.Component {
   }
 }
 
+export class StandardTextDark extends React.Component {
+  render() {
+    return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 18, color: Colors.colorInactiveDark, }]} />;
+  }
+}
+
 export class BigText extends React.Component {
   render() {
     return <Text {...this.props} style={[this.props.style, { fontFamily: 'helvetica', fontSize: 26, color: Colors.colorLight, fontWeight: 'bold', }]} />;
