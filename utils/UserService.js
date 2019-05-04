@@ -8,8 +8,7 @@ class ServiceAPI {
     state = {
         user: {}
     };
-    // update state directlly using this.state.something = "something"
-
+   
     syncData = () => {
         // sync data with local when re-open app
     }
@@ -41,7 +40,6 @@ class ServiceAPI {
     }
 
     login = (data) => {
-
         let {
             email,
             password
@@ -77,6 +75,7 @@ class ServiceAPI {
             });
     }
 
+    // not used atm
     setupLogin = () => {
         var state = this.state;
         // call api or something
@@ -118,5 +117,4 @@ class ServiceAPI {
     getUser = () => state.user;
 }
 
-// remember to make it singleton when export (with new keyword)
 export default new ServiceAPI();
