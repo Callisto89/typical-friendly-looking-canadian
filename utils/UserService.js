@@ -46,12 +46,6 @@ class ServiceAPI {
         } = data;
         console.log('loggin in automatically');
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(user => {
-                user.updateProfile({
-                    displayName: 'inSym8'
-                }).then(console.log).catch(console.error)
-            })
-            .then(user => state.user = user)
             .then(console.log('all done'))
             .catch(function (error) {
                 console.log(error);
@@ -66,12 +60,11 @@ class ServiceAPI {
         } = data;
         console.log('loggin in with new account');
         firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(user => {
-                user.updateProfile({
-                    displayName: nickname
-                })
-            }).catch(function (error) {
+            .catch(function (error) {
                 console.log(error);
+            })
+            .finally(() => {
+                this.updateNickname(nickname)
             });
     }
 

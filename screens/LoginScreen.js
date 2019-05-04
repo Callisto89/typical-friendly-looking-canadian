@@ -38,22 +38,6 @@ export default class LoginScreen extends React.Component {
   render() {
       return (
         <View style={styles.contentContainer}>
-          <Text>Login yo!</Text>
-            <TextInput
-              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-              onChangeText={(text) => this.setState({ email: text})}
-              textContentType='emailAddress'
-              placeholder='email'
-            />
-            <TextInput
-              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-              onChangeText={(text) => this.setState({password: text})}
-              secureTextEntry={true}
-              textContentType='password'
-              placeholder='password'
-            />
-            <Button onPress={() => this.handleLogin(this.state)} title='Submit'/>
-
             <Text style={styles.getStartedText}>Can't log in?</Text>
             <Text style={styles.getStartedText}>You need to register!</Text>
             <TextInput
