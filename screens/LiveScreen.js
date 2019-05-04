@@ -9,37 +9,36 @@ import { StandardText, BigText, HeaderText, } from '../components/StyledText';
 import BackgroundImage from '../components/Background';
 import Colors from '../constants/Colors';
 import AddEvent from '../components/AddEvent';
-import * as firebase from 'firebase';
-
-// Initialize Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyAwn6zMdAhCuA2aUb1QW07gsBNk5I1f5w4",
-  authDomain: "wardr-94a12.firebaseapp.com",
-  databaseURL: "https://wardr-94a12.firebaseio.com",
-  projectId: "wardr-94a12",
-  storageBucket: "wardr-94a12.appspot.com",
-  messagingSenderId: "404390621281"
-};
-firebase.initializeApp(firebaseConfig);
+import UserService from '../utils/UserService'
 
 export default class LiveScreen extends React.Component {
 
   state = {
-    greeting: ''
+    greeting: '',
+    nick: ''
   };
 
   constructor(props) {
     super(props);
   };
 
+  dataRequests = [];
+
   componentDidMount() {
-    fetch('https://us-central1-wardr-94a12.cloudfunctions.net/helloWorld')
+    this.dataRequests.push(fetch('https://us-central1-wardr-94a12.cloudfunctions.net/helloWorld')
       .then((res) => {
         this.setState({
-          greeting: res._bodyText
+          greeting: res._bodyText,
+          nick: UserService.getUserData().displayName
         });
       })
-      .catch(() => 'ERROR');
+      .catch(() => 'ERROR'));
+  }
+
+  componentWillUnmount() {
+    while(this.dataRequests.length) {
+      this.dataRequests.pop()();
+    }
   }
 
   static navigationOptions = {
@@ -51,7 +50,7 @@ export default class LiveScreen extends React.Component {
       <BackgroundImage>
         <View style={styles.container}>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-            <StandardText style={{ alignSelf: 'center', }}>{this.state.greeting}</StandardText>
+            <StandardText style={{ alignSelf: 'center', }}>{this.state.greeting} {this.state.nick}</StandardText>
             <View style={styles.buttonContainer}><AddEvent /></View>
             <View style={styles.bigHeaderContainer}>
               <BigText>Next event</BigText>
