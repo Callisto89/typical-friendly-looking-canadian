@@ -70,10 +70,13 @@ export default class Event extends React.Component {
                             }
                         </View>
                         <View style={styles.buttonContainer}>
-                            <TouchableOpacity onPress={this._onPressButton}>
-                                <View style={styles.addMeButton}>
-                                    <ButtonText>Anmäl mig till event</ButtonText>
-                                </View>
+                            <TouchableOpacity onPress={this._onPressButton} style={styles.addMeButton}>
+                                <ButtonText>Anmäl mig till event</ButtonText>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity onPress={this._onPressButton} style={styles.removeMeButton}>
+                                <ButtonText>He bort mig</ButtonText>
                             </TouchableOpacity>
                         </View>
                     </TouchableOpacity>
@@ -132,6 +135,14 @@ const styles = StyleSheet.create({
         width: 250,
         alignItems: 'center',
         backgroundColor: Colors.colorPositive,
+        padding: 10,
+    },
+    removeMeButton: {
+        marginBottom: 15,
+        marginTop: 10,
+        width: 250,
+        alignItems: 'center',
+        backgroundColor: Colors.colorNegative,
         padding: 10,
     },
 });
