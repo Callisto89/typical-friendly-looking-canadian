@@ -74,7 +74,12 @@ class ServiceAPI {
     }
 
     logout = () => {
-
+        firebase.auth().signOut()
+            .then(() => {
+                // Sign-out successful.
+                console.log('successfully logged out');
+            })
+            .catch(e => console.log(e));
     }
 
     onLoggedOut = () => {
