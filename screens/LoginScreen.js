@@ -54,6 +54,7 @@ export default class LoginScreen extends React.Component {
               onChangeText={(text) => this.setState({ nickname: text })}
               textContentType='nickname'
               placeholder='Nickname'
+              placeholderTextColor={Colors.colorInactive}
               selectionColor={Colors.colorPrimary}
             />
             <TextInput
@@ -61,6 +62,7 @@ export default class LoginScreen extends React.Component {
               onChangeText={(text) => this.setState({ email: text })}
               textContentType='emailAddress'
               placeholder='Email'
+              placeholderTextColor={Colors.colorInactive}
               selectionColor={Colors.colorPrimary}
             />
             <TextInput
@@ -69,6 +71,7 @@ export default class LoginScreen extends React.Component {
               secureTextEntry={true}
               textContentType='password'
               placeholder='Password'
+              placeholderTextColor={Colors.colorInactive}
               selectionColor={Colors.colorPrimary}
             />
           </View>
@@ -98,6 +101,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: Colors.colorLight,
     borderWidth: 1,
+    color: Colors.colorPrimary,
   },
   submitButton: {
     marginBottom: 15,
