@@ -34,10 +34,6 @@ class SignInScreen extends React.Component {
       }));
   }
 
-    handleSignup = (data) => {
-        UserService.createAccount(data);
-    }
-
     handleLogin = (data) => {
         UserService.login(data);
     }

@@ -38,10 +38,6 @@ class SignUpScreen extends React.Component {
         UserService.createAccount(data);
     }
 
-    handleLogin = (data) => {
-        UserService.login(data);
-    }
-
     render() {
         const { navigation } = this.props;
         return (
