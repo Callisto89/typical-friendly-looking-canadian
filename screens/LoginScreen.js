@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.colorLight,
     borderWidth: 1,
     color: Colors.colorPrimary,
+    marginBottom: 2,
   },
   button: {
     marginBottom: 15,
