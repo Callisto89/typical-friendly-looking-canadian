@@ -10,7 +10,6 @@ import { StandardText, BigText, Header2Text, ButtonText } from '../components/St
 import BackgroundImage from '../components/Background';
 import UserService from '../utils/UserService';
 import * as firebase from 'firebase';
-import UserService from '../utils/UserService';
 
 export default class LoginScreen extends React.Component {
   static navigationOptions = {
