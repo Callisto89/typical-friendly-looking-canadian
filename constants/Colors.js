@@ -13,6 +13,7 @@ export default {
   colorSecondaryOpacity: 'rgba(20, 83, 104, 0.75)',
 
   colorLight: 'rgba(221, 255, 247, 1)',
+  colorLightOpacity: 'rgba(221, 255, 247, 0.75)',
   colorAccent: 'rgba(244, 208, 111, 1)',
   colorAccentDark: 'rgba(198, 151, 39, 1)',
   
