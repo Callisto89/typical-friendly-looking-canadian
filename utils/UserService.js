@@ -8,7 +8,7 @@ class ServiceAPI {
     state = {
         user: {}
     };
-   
+
     syncData = () => {
         // sync data with local when re-open app
     }
@@ -17,97 +17,71 @@ class ServiceAPI {
         if (firebase.auth().currentUser === null) {
             return {};
         }
-        let userData = {
+        const {
             displayName,
             uid,
             email,
             emailVerified
         } = firebase.auth().currentUser;
 
-        return userData;
+        return {
+            displayName,
+            uid,
+            email,
+            emailVerified
+        };
     }
 
     updateNickname = (nick) => {
         if (firebase.auth().currentUser !== null) {
             firebase.auth().currentUser.updateProfile({
                 displayName: nick
-            }).then(function () {
+            }).then(() => {
                 console.log('Updated');
-            }, function (error) {
+            }, (error) => {
                 console.log('Error happened', error);
             });
         }
     }
 
     login = (data) => {
-        let {
+        const {
             email,
             password
         } = data;
         console.log('loggin in automatically');
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(console.log('all done'))
-            .catch(function (error) {
+            .catch((error) => {
                 console.log(error);
             });
     }
 
     createAccount = (data) => {
-        let {
+        const {
             email,
             password,
             nickname
         } = data;
         console.log('loggin in with new account');
         firebase.auth().createUserWithEmailAndPassword(email, password)
-            .catch(function (error) {
+            .catch((error) => {
                 console.log(error);
             })
             .finally(() => {
-                this.updateNickname(nickname)
+                this.updateNickname(nickname);
             });
-    }
-
-    // not used atm
-    setupLogin = () => {
-        var state = this.state;
-        // call api or something
-        // token will be stored in state
-        firebase.auth().signInAnonymously().catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // ...
-        });
-
-        firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                // User is signed in.
-                var isAnonymous = user.isAnonymous;
-                var uid = user.uid;
-                state.user = {
-                    isAnonymous,
-                    uid,
-                    isLoggedIn: true
-                };
-            } else {
-                state.user = {
-                    isLoggedIn: false
-                };
-            }
-            // ...
-        });
     }
 
     logout = () => {
 
     }
 
-    onLoggedOut = (callback) => {
+    onLoggedOut = () => {
         // listener will run callback function when user logged out
     }
 
-    getUser = () => state.user;
+    getUser = () => this.state.user;
 }
 
 export default new ServiceAPI();
