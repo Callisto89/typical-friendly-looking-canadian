@@ -11,22 +11,14 @@ admin.initializeApp();
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
 exports.helloWorld = functions.https.onRequest((request, response) => {
-    const slump = Math.floor(Math.random() * 3) + 1;
-
-    switch (slump) {
-    case 1:
-        response.status(201).send('Hello from Firebase!');
-        break;
-    case 2:
-        response.status(200).send('from Firebase Hello!');
-        break;
-    case 3:
-        response.status(200).send('Firebase Hello from!');
-        break;
-    default:
-        response.status(200).send('dra helvete hej');
-        break;
-    }
+    const slump = Math.floor(Math.random() * 4);
+    const greetings = [
+        'Hello from Firebase!',
+        'from Firebase Hello!',
+        'Firebase Hello from!',
+        'Dra helvete hej!'
+    ];
+    response.status(200).send(greetings[slump]);
 });
 
 // Function that responds with all relevant data to a event
