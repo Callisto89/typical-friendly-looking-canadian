@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Colors from '../constants/Colors';
-import { HeaderText, ButtonText } from '../components/StyledText';
+import { StandardText, BigText, Header2Text, ButtonText } from '../components/StyledText';
 import BackgroundImage from '../components/Background';
 import UserService from '../utils/UserService';
 import * as firebase from 'firebase';
@@ -42,8 +42,10 @@ export default class LoginScreen extends React.Component {
       <BackgroundImage>
         <View style={styles.contentContainer}>
           <View style={styles.headerContainer}>
-            <HeaderText>Can't log in?</HeaderText>
-            <HeaderText>You need to register!</HeaderText>
+            <BigText>You need to sign in</BigText>
+          </View>
+          <View style={styles.headerContainer}>
+            <Header2Text>Register an account:</Header2Text>
           </View>
           <View style={styles.textInputContainer}>
             <TextInput
@@ -72,9 +74,15 @@ export default class LoginScreen extends React.Component {
               selectionColor={Colors.colorPrimary}
             />
           </View>
-          <TouchableOpacity onPress={() => this.handleSignup(this.state)} style={styles.submitButton}>
+          <TouchableOpacity onPress={() => this.handleSignup(this.state)} style={{ ...styles.button, backgroundColor: Colors.colorPrimary}}>
             <ButtonText>Submit</ButtonText>
           </TouchableOpacity>
+          <View style={styles.textContainer}>
+            <StandardText>Already have an account?</StandardText>
+            <TouchableOpacity onPress={() => this.handleSignup(this.state)} style={{ ...styles.button, backgroundColor: Colors.colorSecondary, marginTop: 10,}}>
+              <ButtonText>Sign in</ButtonText>
+            </TouchableOpacity>
+          </View>
         </View>
       </BackgroundImage>
     );
@@ -83,12 +91,17 @@ export default class LoginScreen extends React.Component {
 
 const styles = StyleSheet.create({
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 20,
     alignSelf: 'center',
     width: '95%',
   },
   headerContainer: {
     alignItems: 'center',
+    marginTop: 10,
+  },
+  textContainer: {
+    alignItems: 'center',
+    marginTop: 30,
   },
   textInputContainer: {
     marginTop: 20,
@@ -100,13 +113,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     color: Colors.colorPrimary,
   },
-  submitButton: {
+  button: {
     marginBottom: 15,
     marginTop: 30,
     width: 250,
     alignSelf: 'center',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: Colors.colorPrimary,
   },
 });
