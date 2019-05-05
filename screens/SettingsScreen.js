@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 import ChangeNickname from '../components/ChangeNickname';
+import LogOut from '../components/LogOut';
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
@@ -12,7 +13,10 @@ export default class SettingsScreen extends React.Component {
       /* Go ahead and delete ExpoConfigView and replace it with your
      * content, we just wanted to give you a quick view of your config */
       return (
-          <View><ChangeNickname /></View>
+          <View>
+              <ChangeNickname />
+              <LogOut />
+          </View>
       );
   }
 }
