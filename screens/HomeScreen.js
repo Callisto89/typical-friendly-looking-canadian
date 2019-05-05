@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import * as firebase from 'firebase';
 
 import LiveScreen from './LiveScreen';
-import LoginScreen from './LoginScreen';
+import SignUpScreen from './SignUpScreen';
 
 import UserService from '../utils/UserService';
 
@@ -40,7 +40,7 @@ export default class HomeScreen extends React.Component {
 
   isLoggedIn() {
       const { user } = this.state;
-      return user ? <LiveScreen /> : <LoginScreen />;
+      return user ? <LiveScreen /> : <SignUpScreen />;
   }
 
   render() {
