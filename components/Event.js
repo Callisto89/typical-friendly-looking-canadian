@@ -75,21 +75,15 @@ export default class Event extends React.Component {
                                 this.props.data.waitingList.map((player, index) => <PlayerList key={index} name={player} />)
                             }
                         </View>
-                        <View style={styles.buttonContainer}>
-                            <TouchableOpacity onPress={this._onPressButton} style={styles.addMeButton}>
-                                <ButtonText>Anmäl mig till event</ButtonText>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={styles.buttonContainer}>
-                            <TouchableOpacity onPress={this._onPressButton} style={styles.removeMeButton}>
-                                <ButtonText>He bort mig</ButtonText>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={styles.editContainer}>
-                            <TouchableOpacity onPress={this.editEvent} style={styles.editEventButton}>
-                                <StandardText>Edit event</StandardText>
-                            </TouchableOpacity>
-                        </View>
+                        <TouchableOpacity onPress={this._onPressButton} style={{ ...styles.signUpToggleButton, backgroundColor: Colors.colorPositive}}>
+                            <ButtonText>Anmäl mig till event</ButtonText>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={this._onPressButton} style={{ ...styles.signUpToggleButton, backgroundColor: Colors.colorNegative}}>
+                            <ButtonText>He bort mig</ButtonText>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={this.editEvent} style={styles.editEventButton}>
+                            <StandardText>Edit event</StandardText>
+                        </TouchableOpacity>
                     </TouchableOpacity>
                 </View>
             )
@@ -129,7 +123,6 @@ const styles = StyleSheet.create({
     },
     listHeaderContainer: {
         marginTop: 30,
-        width: '80%',
         alignSelf: 'center',
         alignItems: 'center',
     },
@@ -139,37 +132,20 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignItems: 'center',
     },
-    buttonContainer: {
-        marginTop: 20,
-        width: '100%',
+    signUpToggleButton: {
+        marginBottom: 15,
+        marginTop: 30,
+        width: 250,
         alignSelf: 'center',
         alignItems: 'center',
-    },
-    addMeButton: {
-        marginBottom: 15,
-        marginTop: 10,
-        width: 250,
-        alignItems: 'center',
-        backgroundColor: Colors.colorPositive,
         padding: 10,
     },
-    editContainer: {
-        marginTop: 10,
-        alignSelf: 'flex-end',
-    },
     editEventButton: {
-        marginTop: 10,
+        marginTop: 20,
         width: 125,
+        alignSelf: 'flex-end',
         alignItems: 'center',
         backgroundColor: Colors.colorPositive,
         padding: 5,
-    },
-    removeMeButton: {
-        marginBottom: 15,
-        marginTop: 10,
-        width: 250,
-        alignItems: 'center',
-        backgroundColor: Colors.colorNegative,
-        padding: 10,
     },
 });
