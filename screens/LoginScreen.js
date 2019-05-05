@@ -1,82 +1,111 @@
 import React from 'react';
 import {
-    StyleSheet,
-    Text,
-    View,
-    TextInput,
-    Button
+  StyleSheet,
+  View,
+  TextInput,
+  TouchableOpacity,
 } from 'react-native';
-
+import Colors from '../constants/Colors';
+import { HeaderText, ButtonText } from '../components/StyledText';
+import BackgroundImage from '../components/Background';
+import UserService from '../utils/UserService';
 import * as firebase from 'firebase';
 import UserService from '../utils/UserService';
 
 export default class LoginScreen extends React.Component {
   static navigationOptions = {
-      header: null,
+    header: null,
   };
 
   constructor(props) {
-      super(props);
-      this.state = {};
-  }
-
-  componentDidMount() {
-      firebase.auth().onAuthStateChanged(user => this.setState({
-          user: UserService.getUserData(user)
-      }));
+    super(props);
+    this.state = {};
   }
 
   handleSignup = (data) => {
-      UserService.createAccount(data);
+    UserService.createAccount(data);
   }
 
-handleLogin = (data) => {
+  handleLogin = (data) => {
     UserService.login(data);
-}
+  }
 
-render() {
+  static navigationOptions = {
+    header: null,
+  };
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => this.setState({
+      user: UserService.getUserData(user)
+    }));
+  }
+
+  render() {
     return (
+      <BackgroundImage>
         <View style={styles.contentContainer}>
-            <Text style={styles.getStartedText}>Can&apos;t log in?</Text>
-            <Text style={styles.getStartedText}>You need to register!</Text>
+          <View style={styles.headerContainer}>
+            <HeaderText>Can't log in?</HeaderText>
+            <HeaderText>You need to register!</HeaderText>
+          </View>
+          <View style={styles.textInputContainer}>
             <TextInput
-                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                onChangeText={text => this.setState({ nickname: text })}
-                textContentType='nickname'
-                placeholder='Nickname'
+              style={styles.textInput}
+              onChangeText={(text) => this.setState({ nickname: text })}
+              textContentType='nickname'
+              placeholder='Nickname'
+              selectionColor={Colors.colorPrimary}
             />
             <TextInput
-                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                onChangeText={text => this.setState({ email: text })}
-                textContentType='emailAddress'
-                placeholder='email'
+              style={styles.textInput}
+              onChangeText={(text) => this.setState({ email: text })}
+              textContentType='emailAddress'
+              placeholder='Email'
+              selectionColor={Colors.colorPrimary}
             />
             <TextInput
-                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                onChangeText={text => this.setState({ password: text })}
-                secureTextEntry
-                textContentType='password'
-                placeholder='password'
+              style={styles.textInput}
+              onChangeText={(text) => this.setState({ password: text })}
+              secureTextEntry={true}
+              textContentType='password'
+              placeholder='Password'
+              selectionColor={Colors.colorPrimary}
             />
-            <Button onPress={() => this.handleSignup(this.state)} title='Submit' />
-
+          </View>
+          <TouchableOpacity onPress={() => this.handleSignup(this.state)} style={styles.submitButton}>
+            <ButtonText>Submit</ButtonText>
+          </TouchableOpacity>
         </View>
+      </BackgroundImage>
     );
-}
+  }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-    contentContainer: {
-        paddingTop: 30,
-    },
-    getStartedText: {
-        fontSize: 17,
-        color: 'rgba(96,100,109, 1)',
-        lineHeight: 24,
-        textAlign: 'center',
-    },
+  contentContainer: {
+    paddingTop: 30,
+    alignSelf: 'center',
+    width: '95%',
+  },
+  headerContainer: {
+    alignItems: 'center',
+  },
+  textInputContainer: {
+    marginTop: 20,
+  },
+  textInput: {
+    backgroundColor: Colors.colorLightOpacity,
+    height: 40,
+    borderColor: Colors.colorLight,
+    borderWidth: 1,
+  },
+  submitButton: {
+    marginBottom: 15,
+    marginTop: 30,
+    width: 250,
+    alignSelf: 'center',
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: Colors.colorPrimary,
+  },
 });
