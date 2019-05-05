@@ -18,7 +18,7 @@ import {
 import BackgroundImage from '../components/Background';
 import UserService from '../utils/UserService';
 
-class SignUpScreen extends React.Component {
+class SignInScreen extends React.Component {
   static navigationOptions = {
       header: null,
   };
@@ -34,8 +34,8 @@ class SignUpScreen extends React.Component {
       }));
   }
 
-    handleSignup = (data) => {
-        UserService.createAccount(data);
+    handleLogin = (data) => {
+        UserService.login(data);
     }
 
     render() {
@@ -47,17 +47,9 @@ class SignUpScreen extends React.Component {
                         <BigText>You need to sign in</BigText>
                     </View>
                     <View style={styles.headerContainer}>
-                        <Header2Text>Register an account:</Header2Text>
+                        <Header2Text>Sign in:</Header2Text>
                     </View>
                     <View style={styles.textInputContainer}>
-                        <TextInput
-                            style={styles.textInput}
-                            onChangeText={text => this.setState({ nickname: text })}
-                            textContentType='nickname'
-                            placeholder='Nickname'
-                            placeholderTextColor={Colors.colorInactive}
-                            selectionColor={Colors.colorPrimary}
-                        />
                         <TextInput
                             style={styles.textInput}
                             onChangeText={text => this.setState({ email: text })}
@@ -77,7 +69,7 @@ class SignUpScreen extends React.Component {
                         />
                     </View>
                     <TouchableOpacity
-                        onPress={() => this.handleSignup(this.state)}
+                        onPress={() => this.handleLogin(this.state)}
                         style={{
                             ...styles.button,
                             backgroundColor: Colors.colorPrimary
@@ -86,16 +78,16 @@ class SignUpScreen extends React.Component {
                         <ButtonText>Submit</ButtonText>
                     </TouchableOpacity>
                     <View style={styles.textContainer}>
-                        <StandardText>Already have an account?</StandardText>
+                        <StandardText>Don&apos;t have an account?</StandardText>
                         <TouchableOpacity
-                            onPress={() => navigation.navigate('SignIn')}
+                            onPress={() => navigation.navigate('SignUp')}
                             style={{
                                 ...styles.button,
                                 backgroundColor: Colors.colorSecondary,
                                 marginTop: 10
                             }}
                         >
-                            <ButtonText>Sign in</ButtonText>
+                            <ButtonText>Create account</ButtonText>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -139,4 +131,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default withNavigation(SignUpScreen);
+export default withNavigation(SignInScreen);
