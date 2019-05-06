@@ -28,7 +28,7 @@ export default class LiveScreen extends React.Component {
 
   componentDidMount() {
       console.log('componentdidmount, fetching');
-      this.dataRequests.push(fetch('https://us-central1-wardr-94a12.cloudfunctions.net/helloWorld')
+      this.dataRequests.push(fetch('https://europe-west1-wardr-94a12.cloudfunctions.net/helloWorld')
           .then((res) => {
               this.setState({
                   greeting: res._bodyText,

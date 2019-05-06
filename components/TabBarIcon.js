@@ -3,13 +3,21 @@ import { Text } from 'react-native';
 
 import Colors from '../constants/Colors';
 
-export default class TabBarIcon extends React.Component {
-  render() {
-    return (
-      <Text
-        size={26}
-        style={{ marginBottom: -3, color: this.props.focused ? Colors.colorAccentDark : Colors.colorInactiveDark}}
-      >{this.props.name}</Text>
-    );
-  }
-}
+const TabBarIcon = () => ({
+    render() {
+        const { focused, name } = this.props;
+        return (
+            <Text
+                size={26}
+                style={{
+                    marginBottom: -3,
+                    color: focused ? Colors.colorAccentDark : Colors.colorInactiveDark
+                }}
+            >
+                {name}
+            </Text>
+        );
+    }
+});
+
+export default TabBarIcon;
