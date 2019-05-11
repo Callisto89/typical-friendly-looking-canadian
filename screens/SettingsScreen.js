@@ -13,9 +13,12 @@ export default class SettingsScreen extends React.Component {
       /* Go ahead and delete ExpoConfigView and replace it with your
      * content, we just wanted to give you a quick view of your config */
       return (
-          <View>
-              <ChangeNickname />
-              <LogOut />
+          <View style={{ flex: 1 }}>
+              <View style={{ flex: 3, justifyContent: 'space-between' }}>
+                  <ChangeNickname />
+                  <LogOut />
+              </View>
+              <View style={{ flex: 10 }} />
           </View>
       );
   }

@@ -19,20 +19,28 @@ import BackgroundImage from '../components/Background';
 import UserService from '../utils/UserService';
 
 class SignUpScreen extends React.Component {
-  static navigationOptions = {
-      header: null,
-  };
+    static navigationOptions = {
+        header: null,
+    };
 
-  constructor(props) {
-      super(props);
-      this.state = {};
-  }
+    listeners = [];
 
-  componentDidMount() {
-      firebase.auth().onAuthStateChanged(user => this.setState({
-          user: UserService.getUserData(user)
-      }));
-  }
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    componentDidMount() {
+        this.listeners.push(firebase.auth().onAuthStateChanged(user => this.setState({
+            user: UserService.getUserData(user)
+        })));
+    }
+
+    componentWillUnmount() {
+        while (this.listeners.length) {
+            this.listeners.pop()();
+        }
+    }
 
     handleSignup = (data) => {
         UserService.createAccount(data);
