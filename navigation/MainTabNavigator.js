@@ -2,17 +2,13 @@ import React from 'react';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import SignUpScreen from '../screens/SignUpScreen';
-import SignInScreen from '../screens/SignInScreen';
+import LiveScreen from '../screens/LiveScreen';
 import UpcomingScreen from '../screens/UpcomingScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import Colors from '../constants/Colors';
 
 const HomeStack = createStackNavigator({
-    Home: HomeScreen,
-    SignUp: SignUpScreen,
-    SignIn: SignInScreen,
+    Home: LiveScreen,
 });
 
 HomeStack.navigationOptions = {
