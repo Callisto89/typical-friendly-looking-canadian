@@ -1,7 +1,7 @@
 
 const csgo = {
     longName: 'Counter-Strike: Global Offensive',
-    shortName: 'CSGO',
+    shortName: 'CS:GO',
     maxPlayers: 5
 };
 
