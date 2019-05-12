@@ -4,6 +4,8 @@ const functions = require('firebase-functions');
 // The Firebase Admin SDK to access the Firebase Realtime Database.
 const admin = require('firebase-admin');
 
+const availableGames = require('./availableGames');
+
 admin.initializeApp();
 
 
@@ -39,4 +41,13 @@ exports.getEvent = functions
         };
 
         response.status(200).send(event);
+    });
+
+exports.getAvailableGames = functions
+    .region('europe-west1')
+    .https.onRequest((request, response) => {
+        response
+            .status(200)
+            .type('application/json')
+            .send(availableGames);
     });
