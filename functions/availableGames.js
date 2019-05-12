@@ -19,7 +19,7 @@ const apexlegends = {
 
 const blc2 = {
     longName: 'Battlerite',
-    shortName: 'blc2',
+    shortName: 'BLC 2',
     maxPlayers: 3
 }
 
