@@ -20,7 +20,7 @@ const getUpcomingEvents = () => new Promise(resolve => resolve([
         id: 3,
         startDate: Date.now() + 360 * 10000000,
         maxPlayers: 5,
-        players: ['Callisto', 'inSym8', 'ProHugoLeet', 'KennyKentaur', 'CAINE_THE_PAIN'],
+        players: ['inSym8', 'ProHugoLeet', 'KennyKentaur', 'CAINE_THE_PAIN', 'break'],
         waitingList: ['friberg'],
     },
 ]));

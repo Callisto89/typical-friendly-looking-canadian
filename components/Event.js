@@ -15,6 +15,7 @@ import {
 } from './StyledText';
 import Colors from '../constants/Colors';
 import PlayerList from './PlayerList';
+import UserService from '../utils/UserService';
 
 export default class Event extends React.Component {
     constructor(props) {
@@ -25,8 +26,11 @@ export default class Event extends React.Component {
         };
     }
 
-    editEvent = () => {
-        Alert.alert('Snape kills Dumbledore');
+    componentDidMount() {
+        this.setState({
+            nick: UserService.getUserData().displayName
+        });
+        this.forceUpdate();
     }
 
     timeFormatter = (timestamp) => {
@@ -57,21 +61,66 @@ export default class Event extends React.Component {
         }));
     }
 
+    editEvent = () => {
+        Alert.alert('Snape kills Dumbledore');
+    }
+
     render() {
-        const { expanded } = this.state;
+        const selectStyle = (data, nick) => {
+            if (data.players.includes(nick)) {
+                return {
+                    ...styles.eventContainer,
+                    backgroundColor: Colors.colorPositiveOpacity
+                };
+            }
+            return {
+                ...styles.eventContainer,
+                backgroundColor: Colors.colorPrimaryOpacity
+            };
+        };
+        const toggleAddedToEvent = (data, nick) => {
+            if (data.players.includes(nick)) {
+                return (
+                    <TouchableOpacity
+                        onPress={this._onPressButton}
+                        style={{
+                            ...styles.signUpToggleButton,
+                            backgroundColor: Colors.colorNegative
+                        }}
+                    >
+                        <ButtonText>He bort mig</ButtonText>
+                    </TouchableOpacity>
+                );
+            }
+            return (
+                <TouchableOpacity
+                    onPress={this._onPressButton}
+                    style={{
+                        ...styles.signUpToggleButton,
+                        backgroundColor: Colors.colorPositive
+                    }}
+                >
+                    <ButtonText>Anmäl mig till event</ButtonText>
+                </TouchableOpacity>
+            );
+        };
+        const { expanded, nick } = this.state;
         const { data } = this.props;
         if (expanded) {
             return (
                 <View>
-                    <TouchableOpacity onPress={this.toggleEventView} style={styles.eventContainer}>
+                    <TouchableOpacity
+                        onPress={this.toggleEventView}
+                        style={selectStyle(data, nick)}
+                    >
                         <View style={styles.eventInfoContainer}>
                             <HeaderText>{data.name}</HeaderText>
                             <StandardText>{this.timeFormatter(data.startDate)}</StandardText>
                             <StandardTextDark style={{ marginTop: 10, }}>
                                 {data.players.length}
-                                /
+                        /
                                 {data.maxPlayers}
-                                players
+                        players
                             </StandardTextDark>
                         </View>
                         <View style={styles.listHeaderContainer}>
@@ -100,24 +149,7 @@ export default class Event extends React.Component {
                                 ))
                             }
                         </View>
-                        <TouchableOpacity
-                            onPress={this._onPressButton}
-                            style={{
-                                ...styles.signUpToggleButton,
-                                backgroundColor: Colors.colorPositive
-                            }}
-                        >
-                            <ButtonText>Anmäl mig till event</ButtonText>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={this._onPressButton}
-                            style={{
-                                ...styles.signUpToggleButton,
-                                backgroundColor: Colors.colorNegative
-                            }}
-                        >
-                            <ButtonText>He bort mig</ButtonText>
-                        </TouchableOpacity>
+                        {toggleAddedToEvent(data, nick)}
                         <TouchableOpacity
                             onPress={this.editEvent}
                             style={styles.editEventButton}
@@ -132,16 +164,16 @@ export default class Event extends React.Component {
             <View>
                 <TouchableOpacity
                     onPress={this.toggleEventView}
-                    style={styles.compactEventContainer}
+                    style={selectStyle(data, nick)}
                 >
                     <View style={styles.eventInfoContainer}>
                         <HeaderText>{data.name}</HeaderText>
                         <StandardText>{this.timeFormatter(data.startDate)}</StandardText>
                         <StandardTextDark style={{ marginTop: 10, }}>
                             {data.players.length}
-                            /
+                    /
                             {data.maxPlayers}
-                            players
+                    players
                         </StandardTextDark>
                     </View>
                 </TouchableOpacity>
@@ -151,13 +183,6 @@ export default class Event extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    compactEventContainer: {
-        width: '80%',
-        alignSelf: 'center',
-        marginTop: 30,
-        padding: 10,
-        backgroundColor: Colors.colorPrimaryOpacity,
-    },
     eventContainer: {
         width: '80%',
         alignSelf: 'center',
