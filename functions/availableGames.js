@@ -21,7 +21,7 @@ const blc2 = {
     longName: 'Battlerite',
     shortName: 'BLC 2',
     maxPlayers: 3
-}
+};
 
 const availableGames = [
     csgo,
@@ -33,5 +33,3 @@ const availableGames = [
 module.exports = {
     availableGames
 };
-
-
