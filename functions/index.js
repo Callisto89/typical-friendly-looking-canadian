@@ -3,10 +3,12 @@ const functions = require('firebase-functions');
 
 // The Firebase Admin SDK to access the Firebase Realtime Database.
 const admin = require('firebase-admin');
-
 const availableGames = require('./availableGames');
+const events = require('./getEvents');
+// const createEventResponse = require('./createEvent');
 
-admin.initializeApp();
+admin.initializeApp(functions.config().firebase);
+// admin.initializeApp();
 
 
 // // Create and Deploy Your First Cloud Functions
@@ -28,19 +30,19 @@ exports.helloWorld = functions
 exports.getEvent = functions
     .region('europe-west1')
     .https.onRequest((request, response) => {
-        const event = {
-            eventId: 1,
-            DiscordGuildId: 0,
-            isLiveEvent: false,
-            maxPlayers: 5,
-            playerList: ['Heaton', 'ProHugoLeet', 'Friberg'],
-            waitingList: [],
-            startDate: Date('January 21, 2075 13:37:00'),
-            endDate: Date('January 21, 2076 13:37:00'),
-            eventStartedTime: null,
-        };
+        response
+            .status(200)
+            .type('application/json')
+            .send(events);
+    });
 
-        response.status(200).send(event);
+exports.createEvent = functions
+    .region('europe-west1')
+    .https.onRequest((request, response) => {
+        response
+            .status(createEventResponse.responseCode)
+            .type('application/json')
+            .send(createEventResponse);
     });
 
 exports.getAvailableGames = functions
@@ -51,3 +53,36 @@ exports.getAvailableGames = functions
             .type('application/json')
             .send(availableGames);
     });
+
+
+// This code also exists in createEvent.js but is commented.
+// need to also export/import "admin" somehow
+// https://europe-west1-wardr-94a12.cloudfunctions.net/createEvent
+
+
+const db = admin.firestore();
+
+
+const createEventResponse = {
+    responscode: 200
+
+};
+
+const event = {
+    eventId: 1,
+    DiscordGuildId: 0,
+    isLiveEvent: false,
+    maxPlayers: 5,
+    playerList: ['Heaton', 'ProHugoLeet', 'Friberg'],
+    waitingList: [],
+    startDate: Date('January 21, 2075 13:37:00'),
+    endDate: Date('January 21, 2076 13:37:00'),
+    eventStartedTime: null,
+};
+
+db.collection('events').doc().set(event);
+
+
+module.export = {
+    createEventResponse
+};
