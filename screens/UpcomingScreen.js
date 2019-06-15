@@ -1,19 +1,15 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
+import { StandardText } from '../components/StyledText';
 import BackgroundImage from '../components/Background';
 import getUpcomingEvents from '../utils/mockData';
-
 import Event from '../components/Event';
 import AddEvent from '../components/AddEvent';
 
 export default class UpcomingScreen extends React.Component {
   static navigationOptions = {
       header: null,
-  };
-
-  state = {
-      upcomingEvents: [],
   };
 
   constructor(props) {
@@ -39,14 +35,19 @@ export default class UpcomingScreen extends React.Component {
       const { upcomingEvents } = this.state;
       return (
           <BackgroundImage>
-              <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+              <ScrollView style={styles.container}>
                   <NavigationEvents
                       onWillFocus={() => this.updateData()}
                   />
-                  <View style={styles.addEventButtonContainer}><AddEvent /></View>
-                  {
-                      upcomingEvents.map(event => <Event key={event.id} data={event} />)
-                  }
+                  <View style={styles.contentContainer}>
+                      <View style={styles.buttonContainer}><AddEvent /></View>
+                      {
+                          upcomingEvents.map(event => <Event key={event.id} event={event} />)
+                      }
+                      <StandardText style={styles.textContainer}>
+                            TRK Software Production
+                      </StandardText>
+                  </View>
               </ScrollView>
           </BackgroundImage>
       );
@@ -56,14 +57,18 @@ export default class UpcomingScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginBottom: 100,
     },
     contentContainer: {
         paddingTop: 30,
+        marginBottom: 100,
     },
-    addEventButtonContainer: {
+    buttonContainer: {
         alignSelf: 'center',
         alignItems: 'center',
-        marginBottom: 5,
-    }
+        marginBottom: 20,
+    },
+    textContainer: {
+        alignSelf: 'center',
+        alignItems: 'center',
+    },
 });
