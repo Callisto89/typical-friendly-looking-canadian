@@ -1,19 +1,10 @@
-// The Cloud Functions for Firebase SDK to create Cloud Functions and setup triggers.
 const functions = require('firebase-functions');
-
-// The Firebase Admin SDK to access the Firebase Realtime Database.
-const admin = require('firebase-admin');
+require('./admin');
 const availableGames = require('./availableGames');
 const events = require('./getEvents');
-// const createEventResponse = require('./createEvent');
-
-admin.initializeApp(functions.config().firebase);
-// admin.initializeApp();
+const { createEvent } = require('./createEvent');
 
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
 exports.helloWorld = functions
     .region('europe-west1')
     .https.onRequest((request, response) => {
@@ -39,10 +30,17 @@ exports.getEvent = functions
 exports.createEvent = functions
     .region('europe-west1')
     .https.onRequest((request, response) => {
+        //        const event = {
+        //            eventId: request[1],
+        //            DiscordGuildId: request[2]
+        //        };
+
+        createEvent();
+        console.log('detta är response6: ');
         response
-            .status(createEventResponse.responseCode)
+            .status(200)
             .type('application/json')
-            .send(createEventResponse);
+            .send('Successfully written!');
     });
 
 exports.getAvailableGames = functions
@@ -59,7 +57,7 @@ exports.getAvailableGames = functions
 // need to also export/import "admin" somehow
 // https://europe-west1-wardr-94a12.cloudfunctions.net/createEvent
 
-
+/*
 const db = admin.firestore();
 
 
@@ -86,3 +84,4 @@ db.collection('events').doc().set(event);
 module.export = {
     createEventResponse
 };
+*/
