@@ -1,41 +1,35 @@
+const { db } = require('./admin');
 
-/*
-const admin = require('firebase-admin');
-//  const admin = require('firebase-admin');
-//  const functions = require('firebase-functions');
+const createEvent = () => {
+//    if (checkInput(request, response) === true) {
+//        console.log('create Event input ok!', request);
+//    } else {
+//        console.error('create event input not ok!');
+//        return ('400');
+//    }
 
-//  admin.initializeApp(functions.config().firebase);
-
-
-// const settings = { timestampsInSnapshots: true };
-// db.settings(settings);
-
-
-const db = admin.firestore();
-
-
-const createEventResponse = {
-    responscode: 200
-
+    db.collection('events').doc().set(event);
+    console.log('Create Event Triggerrrred');
+    return ('200');
 };
+
+// const checkInput = () => {
+//     console.log('inputcheck');
+//     return true;
+// };
 
 const event = {
     eventId: 1,
     DiscordGuildId: 0,
     isLiveEvent: false,
     maxPlayers: 5,
-    playerList: ['Heaton', 'ProHugoLeet', 'Friberg'],
+    playerList: ['fromCreateEvent', 'ProHugoLeet', 'Friberg'],
     waitingList: [],
     startDate: Date('January 21, 2075 13:37:00'),
     endDate: Date('January 21, 2076 13:37:00'),
     eventStartedTime: null,
 };
 
+// module.export = createEvent();
 
-db.collection('events').doc('one').set(event);
-
-
-module.export = {
-    createEventResponse
-};
-*/
+module.exports = { createEvent };
