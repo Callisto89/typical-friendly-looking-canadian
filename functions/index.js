@@ -3,7 +3,7 @@ require('./admin');
 const availableGames = require('./availableGames');
 const events = require('./getEvents');
 const { createEvent } = require('./createEvent');
-
+const { checkEvent } = require('./checkEvent');
 
 exports.helloWorld = functions
     .region('europe-west1')
@@ -30,18 +30,40 @@ exports.getEvent = functions
 exports.createEvent = functions
     .region('europe-west1')
     .https.onRequest((request, response) => {
-        //        const event = {
-        //            eventId: request[1],
-        //            DiscordGuildId: request[2]
-        //        };
+        const event = {
+            eventId: Number.parseInt(request.body.eventId, 10),
+            discordGuildId: Number.parseInt(request.body.discordGuildId, 10),
+            isLiveEvent: request.body.isLieEvent,
+            maxPlayers: 5, // Should be read from user settings
+            playerList: ['fromCreateEvent', 'ProHugoLeet', 'Friberg'], // Should be empty?
+            waitingList: null, // Is this a empty list? [] gives error.
+            startDate: request.body.startDate,
+            endDate: request.body.endDate,
+            eventStartedTime: null, // Not started at creation!
+        };
 
-        createEvent();
-        console.log('detta är response6: ');
+        const inputCheckResponse = checkEvent(event);
+        if (inputCheckResponse != null) {
+            // inputCheck should be null!
+            // else something is wrong, return stuff!
+            console.warn('Felaktig input', event);
+            response
+                .status(inputCheckResponse.responseCode)
+                .type('application/json')
+                .send(inputCheckResponse.responseMessage);
+        }
+
+
+        const createEventResponse = createEvent(event);
+        if (createEventResponse.responseCode !== 200) {
+            console.error('Event misslyckades att skapas!', event);
+        }
         response
-            .status(200)
+            .status(createEventResponse.responseCode)
             .type('application/json')
-            .send('Successfully written!');
+            .send(createEventResponse.responseMessage);
     });
+
 
 exports.getAvailableGames = functions
     .region('europe-west1')
@@ -51,37 +73,3 @@ exports.getAvailableGames = functions
             .type('application/json')
             .send(availableGames);
     });
-
-
-// This code also exists in createEvent.js but is commented.
-// need to also export/import "admin" somehow
-// https://europe-west1-wardr-94a12.cloudfunctions.net/createEvent
-
-/*
-const db = admin.firestore();
-
-
-const createEventResponse = {
-    responscode: 200
-
-};
-
-const event = {
-    eventId: 1,
-    DiscordGuildId: 0,
-    isLiveEvent: false,
-    maxPlayers: 5,
-    playerList: ['Heaton', 'ProHugoLeet', 'Friberg'],
-    waitingList: [],
-    startDate: Date('January 21, 2075 13:37:00'),
-    endDate: Date('January 21, 2076 13:37:00'),
-    eventStartedTime: null,
-};
-
-db.collection('events').doc().set(event);
-
-
-module.export = {
-    createEventResponse
-};
-*/
