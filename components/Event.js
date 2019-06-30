@@ -122,7 +122,7 @@ export default class Event extends React.Component {
                                 {event.players.length}
                                 /
                                 {event.maxPlayers}
-                                { ' players' }
+                                {' players'}
                             </StandardTextDark>
                         </View>
                         <View style={styles.listHeaderContainer}>
@@ -173,9 +173,9 @@ export default class Event extends React.Component {
                         <StandardText>{this.timeFormatter(event.startDate)}</StandardText>
                         <StandardTextDark style={{ marginTop: 10, }}>
                             {event.players.length}
-                    /
+                            /
                             {event.maxPlayers}
-                    players
+                            {' players'}
                         </StandardTextDark>
                     </View>
                 </TouchableOpacity>
