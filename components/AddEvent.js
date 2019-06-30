@@ -1,12 +1,13 @@
 import React from 'react';
-import { Alert, StyleSheet, TouchableOpacity, } from 'react-native';
-
+import { StyleSheet, TouchableOpacity, } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import { ButtonText } from './StyledText';
 import Colors from '../constants/Colors';
 
-export default class AddEventButton extends React.Component {
+class AddEventButton extends React.Component {
     createEvent = () => {
-        Alert.alert('Boop the snoot!');
+        const { navigation } = this.props;
+        navigation.push('AddEvent');
     }
 
     render() {
@@ -28,3 +29,5 @@ const styles = StyleSheet.create({
         padding: 10,
     },
 });
+
+export default withNavigation(AddEventButton);

@@ -5,10 +5,12 @@ import TabBarIcon from '../components/TabBarIcon';
 import LiveScreen from '../screens/LiveScreen';
 import UpcomingScreen from '../screens/UpcomingScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import AddEventScreen from '../screens/AddEventScreen';
 import Colors from '../constants/Colors';
 
 const HomeStack = createStackNavigator({
     Home: LiveScreen,
+    AddEvent: AddEventScreen,
 });
 
 HomeStack.navigationOptions = {
