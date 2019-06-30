@@ -11,3 +11,5 @@ android/app/build
 android/.gradle/
 android/.idea/
 android/local.properties
+functions/FirebaseKeyHugo.json
+functions/getdoc.js

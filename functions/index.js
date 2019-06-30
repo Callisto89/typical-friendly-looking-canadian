@@ -1,17 +1,10 @@
-// The Cloud Functions for Firebase SDK to create Cloud Functions and setup triggers.
 const functions = require('firebase-functions');
-
-// The Firebase Admin SDK to access the Firebase Realtime Database.
-const admin = require('firebase-admin');
-
+require('./admin');
 const availableGames = require('./availableGames');
+const events = require('./getEvents');
+const { createEvent } = require('./createEvent');
 
-admin.initializeApp();
 
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
 exports.helloWorld = functions
     .region('europe-west1')
     .https.onRequest((request, response) => {
@@ -28,19 +21,26 @@ exports.helloWorld = functions
 exports.getEvent = functions
     .region('europe-west1')
     .https.onRequest((request, response) => {
-        const event = {
-            eventId: 1,
-            DiscordGuildId: 0,
-            isLiveEvent: false,
-            maxPlayers: 5,
-            playerList: ['Heaton', 'ProHugoLeet', 'Friberg'],
-            waitingList: [],
-            startDate: Date('January 21, 2075 13:37:00'),
-            endDate: Date('January 21, 2076 13:37:00'),
-            eventStartedTime: null,
-        };
+        response
+            .status(200)
+            .type('application/json')
+            .send(events);
+    });
 
-        response.status(200).send(event);
+exports.createEvent = functions
+    .region('europe-west1')
+    .https.onRequest((request, response) => {
+        //        const event = {
+        //            eventId: request[1],
+        //            DiscordGuildId: request[2]
+        //        };
+
+        createEvent();
+        console.log('detta är response6: ');
+        response
+            .status(200)
+            .type('application/json')
+            .send('Successfully written!');
     });
 
 exports.getAvailableGames = functions
@@ -51,3 +51,37 @@ exports.getAvailableGames = functions
             .type('application/json')
             .send(availableGames);
     });
+
+
+// This code also exists in createEvent.js but is commented.
+// need to also export/import "admin" somehow
+// https://europe-west1-wardr-94a12.cloudfunctions.net/createEvent
+
+/*
+const db = admin.firestore();
+
+
+const createEventResponse = {
+    responscode: 200
+
+};
+
+const event = {
+    eventId: 1,
+    DiscordGuildId: 0,
+    isLiveEvent: false,
+    maxPlayers: 5,
+    playerList: ['Heaton', 'ProHugoLeet', 'Friberg'],
+    waitingList: [],
+    startDate: Date('January 21, 2075 13:37:00'),
+    endDate: Date('January 21, 2076 13:37:00'),
+    eventStartedTime: null,
+};
+
+db.collection('events').doc().set(event);
+
+
+module.export = {
+    createEventResponse
+};
+*/
