@@ -1,10 +1,10 @@
 
 const checkEvent = (request) => {
     const event = request;
-    if (!Number.isInteger(event.eventId)) {
+    if (!Number.isInteger(event.discordGuildId)) {
         const responseStructure = {
             responseCode: 400,
-            responseMessage: 'eventId should be a number(fromCheckEvent.js)'
+            responseMessage: 'discordGuildId should be a number(fromCheckEvent.js)'
         };
         return responseStructure;
     }

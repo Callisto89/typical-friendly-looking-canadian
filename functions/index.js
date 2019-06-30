@@ -31,9 +31,8 @@ exports.createEvent = functions
     .region('europe-west1')
     .https.onRequest((request, response) => {
         const event = {
-            eventId: Number.parseInt(request.body.eventId, 10),
             discordGuildId: Number.parseInt(request.body.discordGuildId, 10),
-            isLiveEvent: request.body.isLieEvent,
+            isLiveEvent: request.body.isLiveEvent,
             maxPlayers: 5, // Should be read from user settings
             playerList: ['fromCreateEvent', 'ProHugoLeet', 'Friberg'], // Should be empty?
             waitingList: null, // Is this a empty list? [] gives error.
@@ -43,7 +42,7 @@ exports.createEvent = functions
         };
 
         const inputCheckResponse = checkEvent(event);
-        if (inputCheckResponse != null) {
+        if (inputCheckResponse !== null) {
             // inputCheck should be null!
             // else something is wrong, return stuff!
             console.warn('Felaktig input', event);
