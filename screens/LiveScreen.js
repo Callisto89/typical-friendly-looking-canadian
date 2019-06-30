@@ -52,6 +52,7 @@ export default class LiveScreen extends React.Component {
     updateData = () => {
         getUpcomingEvents()
             .then((events) => {
+                events.sort((a, b) => a.startDate - b.startDate);
                 const nextEvent = events[0];
                 this.setState({
                     nextEvent,
