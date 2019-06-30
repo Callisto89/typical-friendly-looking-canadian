@@ -27,8 +27,10 @@ export default class Event extends React.Component {
     }
 
     componentDidMount() {
+        const { expanded } = this.props;
         this.setState({
-            nick: UserService.getUserData().displayName
+            nick: UserService.getUserData().displayName,
+            expanded,
         });
         this.forceUpdate();
     }
@@ -66,8 +68,8 @@ export default class Event extends React.Component {
     }
 
     render() {
-        const selectStyle = (data, nick) => {
-            if (data.players.includes(nick)) {
+        const selectStyle = (event, nick) => {
+            if (event.players.includes(nick)) {
                 return {
                     ...styles.eventContainer,
                     backgroundColor: Colors.colorPositiveOpacity
@@ -78,8 +80,8 @@ export default class Event extends React.Component {
                 backgroundColor: Colors.colorPrimaryOpacity
             };
         };
-        const toggleAddedToEvent = (data, nick) => {
-            if (data.players.includes(nick)) {
+        const toggleAddedToEvent = (event, nick) => {
+            if (event.players.includes(nick)) {
                 return (
                     <TouchableOpacity
                         onPress={this._onPressButton}
@@ -105,21 +107,21 @@ export default class Event extends React.Component {
             );
         };
         const { expanded, nick } = this.state;
-        const { data } = this.props;
+        const { event } = this.props;
         if (expanded) {
             return (
                 <View>
                     <TouchableOpacity
                         onPress={this.toggleEventView}
-                        style={selectStyle(data, nick)}
+                        style={selectStyle(event, nick)}
                     >
                         <View style={styles.eventInfoContainer}>
-                            <HeaderText>{data.name}</HeaderText>
-                            <StandardText>{this.timeFormatter(data.startDate)}</StandardText>
+                            <HeaderText>{event.name}</HeaderText>
+                            <StandardText>{this.timeFormatter(event.startDate)}</StandardText>
                             <StandardTextDark style={{ marginTop: 10, }}>
-                                {data.players.length}
+                                {event.players.length}
                         /
-                                {data.maxPlayers}
+                                {event.maxPlayers}
                         players
                             </StandardTextDark>
                         </View>
@@ -128,7 +130,7 @@ export default class Event extends React.Component {
                         </View>
                         <View style={styles.listContainer}>
                             {
-                                data.players.map(player => (
+                                event.players.map(player => (
                                     <PlayerList
                                         key={player}
                                         name={player}
@@ -141,7 +143,7 @@ export default class Event extends React.Component {
                         </View>
                         <View style={styles.listContainer}>
                             {
-                                data.waitingList.map(player => (
+                                event.waitingList.map(player => (
                                     <PlayerList
                                         key={player}
                                         name={player}
@@ -149,7 +151,7 @@ export default class Event extends React.Component {
                                 ))
                             }
                         </View>
-                        {toggleAddedToEvent(data, nick)}
+                        {toggleAddedToEvent(event, nick)}
                         <TouchableOpacity
                             onPress={this.editEvent}
                             style={styles.editEventButton}
@@ -164,15 +166,15 @@ export default class Event extends React.Component {
             <View>
                 <TouchableOpacity
                     onPress={this.toggleEventView}
-                    style={selectStyle(data, nick)}
+                    style={selectStyle(event, nick)}
                 >
                     <View style={styles.eventInfoContainer}>
-                        <HeaderText>{data.name}</HeaderText>
-                        <StandardText>{this.timeFormatter(data.startDate)}</StandardText>
+                        <HeaderText>{event.name}</HeaderText>
+                        <StandardText>{this.timeFormatter(event.startDate)}</StandardText>
                         <StandardTextDark style={{ marginTop: 10, }}>
-                            {data.players.length}
+                            {event.players.length}
                     /
-                            {data.maxPlayers}
+                            {event.maxPlayers}
                     players
                         </StandardTextDark>
                     </View>
@@ -186,7 +188,7 @@ const styles = StyleSheet.create({
     eventContainer: {
         width: '80%',
         alignSelf: 'center',
-        marginTop: 30,
+        marginBottom: 30,
         padding: 10,
         backgroundColor: Colors.colorPrimaryOpacity,
     },
