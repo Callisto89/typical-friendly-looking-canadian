@@ -27,7 +27,7 @@ export default class UpcomingScreen extends React.Component {
   updateData = () => {
       getUpcomingEvents()
           .then(events => this.setState({
-              upcomingEvents: events,
+              upcomingEvents: events.sort((a, b) => a.startDate - b.startDate),
           }));
   };
 
